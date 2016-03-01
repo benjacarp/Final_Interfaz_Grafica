@@ -15,7 +15,7 @@ public class FirstDialog extends Stage {
     private Label welcome;
 
     public FirstDialog() {
-        this.initStyle(StageStyle.UTILITY);                // esto imita el comportamiento
+        this.initStyle(StageStyle.UTILITY);
         this.initModality(Modality.APPLICATION_MODAL);
 
         initComponents();
@@ -28,8 +28,7 @@ public class FirstDialog extends Stage {
         layout.getChildren().add(welcome);
 
         Scene scene = new Scene(layout,200,250);
-//        scene.getStylesheets().add("/style.css");
-        scene.getStylesheets().add("/style.css");
+        scene.getStylesheets().add("/style.css");   //la ruta tambien podría sacarse a una constante
         setScene(scene);
     }
 

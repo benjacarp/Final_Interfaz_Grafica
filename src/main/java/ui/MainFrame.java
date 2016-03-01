@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import ui.utils.UIConstants;
 
 /**
  * Created by benjamin.salas on 01/03/2016.
@@ -24,12 +25,13 @@ public class MainFrame extends Stage{
     }
 
     private void createStage() {
+        // esto podría ponerse en un metodo reenderizar vistas
         StackPane layout = new StackPane();
         layout.getChildren().add(textField);
         layout.getChildren().add(button);
 
-        Scene scene = new Scene(layout,300,250);
-//        scene.getStylesheets().add("/style.css");
+        //esto podría ponerse en un metodo setear propiedades
+        Scene scene = new Scene(layout, UIConstants.HORIZONTAL_DEFAULT_DIALOG_SIZE,UIConstants.VERTICAL_DEFAULT_DIALOG_SIZE);
         scene.getStylesheets().add("/style.css");
         setScene(scene);
     }
