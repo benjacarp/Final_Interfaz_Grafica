@@ -4,19 +4,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
 /**
  * Created by benjamin.salas on 01/03/2016.
  */
-public class MainFrame{
+public class MainFrame extends Stage{
 
     private TextField textField;
     private Button button;
-    private Scene scene;
     private MainController controller;
 
     public MainFrame() {
-
         this.controller = new MainController(this);
 
         initComponents();
@@ -31,7 +30,8 @@ public class MainFrame{
 
         Scene scene = new Scene(layout,300,250);
 //        scene.getStylesheets().add("/style.css");
-        this.scene = scene;
+        scene.getStylesheets().add("/style.css");
+        setScene(scene);
     }
 
     private void initComponents() {
@@ -41,10 +41,6 @@ public class MainFrame{
         button = new Button();
         button.setText("Click me!");
         button.setOnAction(e -> controller.buttonClicked());
-    }
-
-    public Scene getScene() {
-        return scene;
     }
 
     public Button getButton() {

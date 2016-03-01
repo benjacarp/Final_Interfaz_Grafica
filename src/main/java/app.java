@@ -1,5 +1,4 @@
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import ui.MainFrame;
@@ -28,11 +27,7 @@ public class app extends Application {
 //
 //        Scene scene = new Scene(layout,300,250);
 
-        MainFrame mainFrame = new MainFrame();
-
-        Scene scene = mainFrame.getScene();
-        scene.getStylesheets().add("/style.css");
-        primaryStage.setScene(scene);
+        primaryStage = new MainFrame();
         primaryStage.show();
 
     }
