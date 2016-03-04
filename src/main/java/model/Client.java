@@ -1,29 +1,28 @@
 package model;
 
+import javax.persistence.*;
+
 /**
  * Created by ASUS on 03/03/2016.
  */
+@Entity
+@Table(name = "client")
 public class Client {
 
+    @Id
+    @Column(nullable = false, unique = true, length = 9)
+    private String dni;
+
+    @Column(nullable = false, unique = false, length = 31)
     private String name;
 
-    public Client() {
-    }
-
-    public Client(String name, long dni) {
-        this.name = name;
-        this.dni = dni;
-    }
-
-    public long getDni() {
+    public String getDni() {
         return dni;
     }
 
-    public void setDni(long dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
-
-    private long dni;
 
     public String getName() {
         return name;

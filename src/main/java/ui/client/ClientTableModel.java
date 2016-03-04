@@ -1,11 +1,15 @@
 package ui.client;
 
+import exception.GestionAppException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Client;
+import service.ClientService;
+
+import java.util.List;
 
 /**
  * Created by ASUS on 03/03/2016.
@@ -39,9 +43,17 @@ public class ClientTableModel extends TableView<Client>{
     private ObservableList<Client> getClients() {
         ObservableList<Client> clients = FXCollections.observableArrayList();
 
-        clients.add(new Client("Benja",34953806L));
-        clients.add(new Client("Juan",12345678L));
-        clients.add(new Client("Ana",32165487L));
+        List<Client> clientsArray = null;
+        try {
+            clientsArray = ClientService.getInstance().findAll();
+
+        } catch (GestionAppException e) {
+            e.printStackTrace();
+        }
+
+        for (Client c : clientsArray) {
+            clients.add(c);
+        }
 
         return clients;
     }

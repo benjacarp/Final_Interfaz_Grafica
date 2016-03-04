@@ -7,6 +7,10 @@ repositories {
     mavenCentral()
 }
 
+if (!hasProperty('mainClass')) {
+    ext.mainClass = 'App'
+}
+
 dependencies {
     compile group: 'com.guigarage', name: 'flatter', version: '0.7'
     compile 'org.jfxtras:jfxtras-agenda:8.0-r4'
@@ -15,6 +19,12 @@ dependencies {
     compile 'org.webjars:font-awesome:4.5.0'
     compile 'com.github.jiconfont:jiconfont:1.0.0'
     compile 'com.github.jiconfont:jiconfont-bundle:1.2.1'
+    compile 'log4j:log4j:1.2.16'
+
+    //database
+    compile 'mysql:mysql-connector-java:5.1.6'
+    compile group: 'org.hibernate', name: 'hibernate-core', version: '4.3.10.Final'
+
 
     testCompile group: 'junit', name: 'junit', version: '4.11'
 
