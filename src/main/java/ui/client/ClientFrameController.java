@@ -1,5 +1,6 @@
 package ui.client;
 
+import exception.GestionAppException;
 import javafx.collections.ObservableList;
 import model.Client;
 import service.ClientService;
@@ -40,5 +41,16 @@ public class ClientFrameController extends GenericController{
         list.add(c2);
 
         return (ObservableList) list;
+    }
+
+    public void deleteButtonClicked() {
+        Client clientToBeDeleted = view.getTable().getSelectionModel().getSelectedItem();
+        try {
+            service.delete(clientToBeDeleted);
+            this.view.getTable().update();
+
+        } catch (GestionAppException e) {
+            e.printStackTrace();
+        }
     }
 }

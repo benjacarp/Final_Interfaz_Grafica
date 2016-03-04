@@ -21,15 +21,16 @@ public class ClientTableModel extends TableView<Client>{
     private TableColumn<Client, Long> dniColumn;
 
     public ClientTableModel(int minWidth, int minHeight) {
-        createColumns();
-        this.setItems(getClients());
+        mapColumns();
+        update();
+//        this.setItems((ObservableList<Client>) ClientService.getInstance().findAll());
         this.getColumns().addAll(nameColumn, dniColumn);
-//        this.setMinSize(minWidth, minHeight);
+
         this.prefWidth(minWidth);
         this.prefHeight(minHeight);
     }
 
-    private void createColumns() {
+    private void mapColumns() {
         nameColumn = new TableColumn<>("Name");
         nameColumn.setPrefWidth(200);
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -40,7 +41,7 @@ public class ClientTableModel extends TableView<Client>{
 
     }
 
-    private ObservableList<Client> getClients() {
+    public void update() {
         ObservableList<Client> clients = FXCollections.observableArrayList();
 
         List<Client> clientsArray = null;
@@ -55,7 +56,8 @@ public class ClientTableModel extends TableView<Client>{
             clients.add(c);
         }
 
-        return clients;
+        setItems(clients);
+        getSelectionModel().clearSelection();
     }
 
 

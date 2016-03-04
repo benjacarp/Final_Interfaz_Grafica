@@ -64,6 +64,7 @@ public class MainFrame extends Stage{
 
     private void initComponents() {
 
+
         menuBar = new MenuBar();
         menuSocio = new Menu("Socios");
         menuItemSocio = new MenuItem("Editar");

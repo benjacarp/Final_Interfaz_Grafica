@@ -5,12 +5,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import jiconfont.icons.FontAwesome;
 import ui.MainFrame;
 import ui.utils.UIConstants;
@@ -90,13 +87,20 @@ public class ClientFrame extends Stage {
         deleteButton.setText("Eliminar");
         deleteButton.setGraphic(MainFrame.addIcon(FontAwesome.TRASH_O, UIConstants.ICON_STANDAR_SIZE, Color.WHITE));
         deleteButton.setContentDisplay(ContentDisplay.TOP);
-        deleteButton.setOnAction(e -> controller.addButtonClicked());
+        deleteButton.setOnAction(e -> controller.deleteButtonClicked());
         deleteButton.setPrefWidth(80);
         deleteButton.setPrefHeight(50);
         deleteButton.setPadding(new Insets(10,10,10,10));
 
         table = new ClientTableModel(400,200);
 
+    }
 
+    public ClientTableModel getTable() {
+        return table;
+    }
+
+    public Button getDeleteButton() {
+        return deleteButton;
     }
 }
