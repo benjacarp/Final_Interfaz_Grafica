@@ -10,4 +10,7 @@ public class UIConstants {
     public static final int HORIZONTAL_DEFAULT_DIALOG_SIZE = 500;
     public static final int VERTICAL_DEFAULT_DIALOG_SIZE = 400;
 
+    public static final int ICON_STANDAR_SIZE = 15;
+
+
 }

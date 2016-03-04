@@ -1,6 +1,6 @@
 apply plugin: 'java'
 
-sourceCompatibility = 1.5
+sourceCompatibility = 1.8
 version = '1.0'
 
 repositories {
@@ -9,6 +9,13 @@ repositories {
 
 dependencies {
     compile group: 'com.guigarage', name: 'flatter', version: '0.7'
+    compile 'org.jfxtras:jfxtras-agenda:8.0-r4'
+    compile 'de.jensd:fontawesomefx:8.9'
+    compile 'com.github.jiconfont:jiconfont-javafx:1.0.0'
+    compile 'org.webjars:font-awesome:4.5.0'
+    compile 'com.github.jiconfont:jiconfont:1.0.0'
+    compile 'com.github.jiconfont:jiconfont-bundle:1.2.1'
+
     testCompile group: 'junit', name: 'junit', version: '4.11'
 
 }

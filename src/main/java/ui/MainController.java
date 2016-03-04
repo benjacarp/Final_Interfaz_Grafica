@@ -1,6 +1,7 @@
 package ui;
 
 import javafx.stage.Stage;
+import ui.client.ClientFrame;
 
 /**
  * Created by benjamin.salas on 01/03/2016.
@@ -17,7 +18,7 @@ public class MainController {
         System.out.println("Oooh do that again");
         this.view.getButton().setText("Click Again!");
 
-        Stage stage = new FirstDialog();
+        Stage stage = new ClientFrame();
         stage.show();
     }
 }
