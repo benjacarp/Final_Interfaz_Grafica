@@ -137,4 +137,14 @@ public class ClientFrameController extends GenericController{
     public void checkClient() {
         System.out.println(currentClient);
     }
+
+    public void search(String searchString) {
+        this.view.getTable().search(searchString);
+    }
+
+    public void sensitiveSearch(String text) {
+        if (text != null) {
+            this.view.getTable().search(text);
+        }
+    }
 }

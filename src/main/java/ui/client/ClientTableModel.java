@@ -60,5 +60,22 @@ public class ClientTableModel extends TableView<Client>{
         getSelectionModel().clearSelection();
     }
 
+    public void search(String searchString) {
+        ObservableList<Client> clients = FXCollections.observableArrayList();
 
+        List<Client> clientsArray = null;
+        try {
+            clientsArray = ClientService.getInstance().findBySearch(searchString);
+
+        } catch (GestionAppException e) {
+            e.printStackTrace();
+        }
+
+        for (Client c : clientsArray) {
+            clients.add(c);
+        }
+
+        setItems(clients);
+        getSelectionModel().clearSelection();
+    }
 }

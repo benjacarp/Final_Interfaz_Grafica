@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -38,6 +39,8 @@ public class ClientFrame extends Stage {
     private ClientFrameController controller;
     private Image image;
     private ImageView imageView;
+    private TextField searchField;
+    private Button searchBtn;
 
     public ClientFrame() {
 
@@ -55,6 +58,11 @@ public class ClientFrame extends Stage {
 
         VBox vBox = new VBox();
         vBox.setPadding(new Insets(15,15,15,15));
+        HBox hBox = new HBox();
+        hBox.getChildren().add(this.searchField);
+        hBox.getChildren().add(this.searchBtn);
+        vBox.getChildren().add(hBox);
+
         vBox.getChildren().add(table);
 
         GridPane grid = new GridPane();
@@ -93,6 +101,16 @@ public class ClientFrame extends Stage {
 
         displayName = new Label();
         displayName.setText("Nombre");
+
+        this.searchField = new TextField();
+        this.searchField.setMinWidth(320);
+        this.searchField.setPrefWidth(320);
+        this.searchField.setOnKeyPressed(e -> controller.sensitiveSearch(this.searchField.getText()));
+
+        this.searchBtn = new Button("Buscar");
+        this.searchBtn.setMinWidth(80);
+        this.searchBtn.setPrefWidth(80);
+        this.searchBtn.setOnAction(e -> this.controller.search(searchField.getText()));
 
         addButton = new Button();
         addButton.setText("Agregar");
