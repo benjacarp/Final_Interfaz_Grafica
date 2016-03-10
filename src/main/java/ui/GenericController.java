@@ -1,6 +1,7 @@
 package ui;
 
 import exception.GestionAppException;
+import javafx.fxml.Initializable;
 import service.GenericService;
 
 import java.util.List;

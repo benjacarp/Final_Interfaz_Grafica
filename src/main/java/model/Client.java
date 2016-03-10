@@ -1,6 +1,10 @@
 package model;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.sql.Blob;
 
 /**
  * Created by ASUS on 03/03/2016.
@@ -12,8 +16,7 @@ public class Client {
     @Id
     @Column(nullable = false, unique = true, length = 9)
     private String dni;
-
-    @Column(nullable = false, unique = false, length = 31)
+    private Blob photo;
     private String name;
 
     public String getDni() {
@@ -30,5 +33,21 @@ public class Client {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Blob getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(Blob photo) {
+        this.photo = photo;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "name='" + name + '\'' +
+                ", dni='" + dni + '\'' +
+                '}';
     }
 }
