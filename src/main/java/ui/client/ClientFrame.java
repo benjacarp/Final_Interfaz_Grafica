@@ -82,8 +82,7 @@ public class ClientFrame extends Stage {
         /////////////rigth panel
         VBox rigth = new VBox();
         vBox.setPadding(new Insets(15,15,15,15));
-        imageView = new ImageView();
-        image = new Image("/default image small.png");
+
         imageView.setImage(image);
         rigth.getChildren().add(imageView);
 
@@ -98,6 +97,13 @@ public class ClientFrame extends Stage {
     }
 
     private void initComponents() {
+
+        imageView = new ImageView();
+        imageView.setFitHeight(100);
+        imageView.setFitWidth(100);
+        imageView.setPreserveRatio(false);
+
+        image = new Image("/default image small.png");
 
         displayName = new Label();
         displayName.setText("Nombre");
@@ -141,12 +147,7 @@ public class ClientFrame extends Stage {
 
         table = new ClientTableModel(400,200);
         table.getSelectionModel().selectedIndexProperty().addListener(e -> controller.changeTableSelection());
-        /*table.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                loadPhoto();
-            }
-        });*/
+
     }
 
     private void loadPhoto() {
