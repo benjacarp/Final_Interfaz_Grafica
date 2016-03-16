@@ -83,7 +83,6 @@ public class ClientFrame extends Stage {
         VBox rigth = new VBox();
         vBox.setPadding(new Insets(15,15,15,15));
 
-        imageView.setImage(image);
         rigth.getChildren().add(imageView);
 
         rigth.getChildren().add(displayName);
@@ -98,20 +97,21 @@ public class ClientFrame extends Stage {
 
     private void initComponents() {
 
+        //imagen por default
         imageView = new ImageView();
         imageView.setFitHeight(100);
         imageView.setFitWidth(100);
         imageView.setPreserveRatio(false);
-
         image = new Image("/default image small.png");
+        imageView.setImage(image);
 
         displayName = new Label();
-        displayName.setText("Nombre");
+        displayName.setText("");
 
         this.searchField = new TextField();
         this.searchField.setMinWidth(320);
         this.searchField.setPrefWidth(320);
-        this.searchField.setOnKeyPressed(e -> controller.sensitiveSearch(this.searchField.getText()));
+        this.searchField.setOnKeyReleased(e -> controller.sensitiveSearch(this.searchField.getText()));
 
         this.searchBtn = new Button("Buscar");
         this.searchBtn.setMinWidth(80);
@@ -131,7 +131,7 @@ public class ClientFrame extends Stage {
         modifyButton.setText("Modificar");
         modifyButton.setGraphic(MainFrame.addIcon(FontAwesome.PENCIL, UIConstants.ICON_STANDAR_SIZE, Color.WHITE));
         modifyButton.setContentDisplay(ContentDisplay.TOP);
-        modifyButton.setOnAction(e -> controller.checkClient());
+        modifyButton.setOnAction(e -> controller.updateClient());
         modifyButton.setPrefWidth(80);
         modifyButton.setPrefHeight(50);
         modifyButton.setPadding(new Insets(10,10,10,10));

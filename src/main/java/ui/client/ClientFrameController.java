@@ -1,28 +1,22 @@
 package ui.client;
 
 import exception.GestionAppException;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
-import jiconfont.icons.FontAwesome;
+import javafx.stage.Stage;
 import model.Client;
 import service.ClientService;
 import ui.GenericController;
-import ui.MainFrame;
-import ui.utils.UIConstants;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -45,6 +39,10 @@ public class ClientFrameController extends GenericController{
     public void addButtonClicked() {
 
         System.out.println("Add new Client");
+        Stage stage = new ClientNewDialog();
+        stage.showAndWait();
+        System.out.println("update table view");
+        this.view.getTable().update();
 
     }
 
@@ -94,11 +92,16 @@ public class ClientFrameController extends GenericController{
     }
 
     private void cargarDatos(Client currentClient) {
-        try {
-            this.view.getDisplayName().setText(currentClient.getName());
-            cargarImagen(currentClient);
-        } catch (NullPointerException e) {
-            System.out.println("null");
+        if (currentClient != null) {
+            try {
+                this.view.getDisplayName().setText(currentClient.getName());
+                cargarImagen(currentClient);
+            } catch (NullPointerException e) {
+                System.out.println("null");
+                cargarImagenPorDefault();
+            }
+        } else {
+            this.view.getDisplayName().setText("");
             cargarImagenPorDefault();
         }
     }
@@ -143,8 +146,19 @@ public class ClientFrameController extends GenericController{
     }
 
     public void sensitiveSearch(String text) {
+        System.out.println(text);
         if (text != null) {
             this.view.getTable().search(text);
+        } else {
+            //mostrar todos
+            this.view.getTable().update();
         }
+    }
+
+    public void updateClient() {
+        System.out.println("Modify client" + currentClient);
+        Stage stage = new ClientEditDialog(currentClient);
+        stage.showAndWait();
+        this.view.getTable().update();
     }
 }
