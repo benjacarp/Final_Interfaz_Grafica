@@ -1,4 +1,4 @@
-package ui;
+package ui.main;
 
 import javafx.geometry.NodeOrientation;
 import javafx.scene.Node;

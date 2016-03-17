@@ -1,8 +1,6 @@
 package ui.client;
 
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -16,7 +14,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import jiconfont.icons.FontAwesome;
 import model.Client;
-import ui.MainFrame;
+import ui.main.MainFrame;
+import ui.controller.ClientFrameController;
 import ui.utils.UIConstants;
 
 /**

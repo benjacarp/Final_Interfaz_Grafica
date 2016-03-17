@@ -1,4 +1,4 @@
-package ui.car;
+package ui.controller;
 
 import exception.GestionAppException;
 import javafx.collections.FXCollections;

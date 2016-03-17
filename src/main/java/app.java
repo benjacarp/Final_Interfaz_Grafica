@@ -1,7 +1,7 @@
 import config.HibernateUtil;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import ui.MainFrame;
+import ui.main.MainFrame;
 
 /**
  * Created by benjamin.salas on 01/03/2016.

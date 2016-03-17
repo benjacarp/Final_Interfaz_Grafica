@@ -1,4 +1,4 @@
-package ui.client;
+package ui.controller;
 
 import exception.GestionAppException;
 import javafx.collections.ObservableList;
@@ -10,7 +10,10 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import model.Client;
 import service.ClientService;
-import ui.GenericController;
+import ui.client.ClientEditDialog;
+import ui.client.ClientFrame;
+import ui.client.ClientNewDialog;
+import ui.controller.GenericController;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

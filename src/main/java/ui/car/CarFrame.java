@@ -4,6 +4,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import ui.controller.CarTableModel;
 
 /**
  * Created by ASUS on 16/03/2016.

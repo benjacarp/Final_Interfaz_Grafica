@@ -1,4 +1,4 @@
-package ui;
+package ui.main;
 
 import javafx.stage.Stage;
 import ui.car.CarFrame;
