@@ -54,4 +54,13 @@ public class Car {
     public void setAvailable(boolean available) {
         this.available = available;
     }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "patente='" + patente + '\'' +
+                ", marca='" + marca + '\'' +
+                ", available=" + available +
+                '}';
+    }
 }

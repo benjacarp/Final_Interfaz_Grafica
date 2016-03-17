@@ -92,4 +92,16 @@ public class CarFrameController extends GenericController{
     public void nuevoPrestamo() {
         System.out.println("Nuevo prestamo");
     }
+
+    public void updateClick() {
+        System.out.println("Update selected CAR" + currentCar);
+    }
+
+    public void deleteClick() {
+        System.out.println("Delete selected CAR" + currentCar);
+    }
+
+    public void newClicked() {
+        System.out.println("New Car");
+    }
 }
