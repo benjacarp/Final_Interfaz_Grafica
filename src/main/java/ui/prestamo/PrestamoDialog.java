@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.Car;
 import service.CarService;
+import ui.client.ComboClient;
 
 /**
  * Created by ASUS on 17/03/2016.
@@ -17,6 +18,7 @@ import service.CarService;
 public class PrestamoDialog extends Stage{
 
     private Car car;
+    private ComboClient comboClient;
     private Label lblCar;
     private Button btnConfirm;
 
@@ -32,6 +34,7 @@ public class PrestamoDialog extends Stage{
     private void createStage() {
         VBox vBox = new VBox();
         vBox.getChildren().add(lblCar);
+        vBox.getChildren().add(comboClient);
         vBox.getChildren().add(btnConfirm);
 
         Scene scene = new Scene(vBox,300,300);
@@ -45,6 +48,8 @@ public class PrestamoDialog extends Stage{
 
         btnConfirm = new Button("Confirmar Prestamo");
         btnConfirm.setOnAction(event -> confirmPrestamo());
+
+        comboClient = new ComboClient();
     }
 
     private void confirmPrestamo() {
