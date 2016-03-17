@@ -1,10 +1,14 @@
 package ui.car;
 
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import ui.controller.CarTableModel;
 
@@ -17,7 +21,12 @@ public class CarFrame extends Stage{
     private final CarFrameController controller;
     private BorderPane pane;
     private ImageView imageView;
-    private Image image ;
+    private Image image;
+    private Button btnPrestamo;
+
+    //panel info
+    private Label lblMarca;
+    private Label lblPatente;
 
     public CarFrame() {
         this.controller = new CarFrameController(this);
@@ -29,15 +38,27 @@ public class CarFrame extends Stage{
         pane = new BorderPane();
         VBox centerVBox = new VBox();
         centerVBox.getChildren().add(table);
+        VBox.setMargin(btnPrestamo,   new Insets(10,10,10,130));//top,rigth,bot,left
+        centerVBox.getChildren().add(btnPrestamo);
         pane.setCenter(centerVBox);
 
         VBox rightVBox = new VBox();
         rightVBox.getChildren().add(imageView);
+        rightVBox.getChildren().add(hBoxCreator("Marca: ",lblMarca));
+        rightVBox.getChildren().add(hBoxCreator("Patente: ",lblPatente));
         pane.setRight(rightVBox);
 
         Scene scene = new Scene(pane,550,300);
         scene.getStylesheets().add("/style.css");
         this.setScene(scene);
+    }
+
+    private HBox hBoxCreator(String label, Label valor) {
+
+        HBox hbox = new HBox();
+        hbox.getChildren().addAll(new Label(label),valor);
+
+        return hbox;
     }
 
     private void initComponents() {
@@ -49,6 +70,15 @@ public class CarFrame extends Stage{
         image = new Image("/default_car.jpg");
         imageView.setImage(image);
 
+        //info
+        lblMarca = new Label("");
+        lblPatente = new Label("");
+
+        btnPrestamo = new Button("Nuevo Prestamo");
+        btnPrestamo.setPrefWidth(100);
+        btnPrestamo.setMinHeight(40);
+        btnPrestamo.setOnAction(event -> controller.nuevoPrestamo());
+
         table = new CarTableModel(300,300);
         table.getSelectionModel().selectedIndexProperty().addListener(e -> controller.changeTableSelection());
     }
@@ -59,5 +89,13 @@ public class CarFrame extends Stage{
 
     public ImageView getImageView() {
         return imageView;
+    }
+
+    public Label getLblMarca() {
+        return lblMarca;
+    }
+
+    public Label getLblPatente() {
+        return lblPatente;
     }
 }

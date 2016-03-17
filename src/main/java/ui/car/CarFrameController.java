@@ -38,6 +38,7 @@ public class CarFrameController extends GenericController{
     private void cargarDatos(Car currentCar) {
         if (currentCar != null) {
             try {
+                cargarInfo(currentCar);
                 cargarImagen(currentCar);
             } catch (NullPointerException e) {
                 System.out.println("null");
@@ -46,6 +47,11 @@ public class CarFrameController extends GenericController{
         } else {
             cargarImagenPorDefault();
         }
+    }
+
+    private void cargarInfo(Car currentCar) {
+        view.getLblMarca().setText(currentCar.getMarca());
+        view.getLblPatente().setText(currentCar.getPatente());
     }
 
     private void cargarImagen(Car currentCar) {
@@ -71,5 +77,9 @@ public class CarFrameController extends GenericController{
 
     private void cargarImagenPorDefault() {
         this.view.getImageView().setImage(new Image("/default_car.jpg"));
+    }
+
+    public void nuevoPrestamo() {
+        System.out.println("Nuevo prestamo");
     }
 }

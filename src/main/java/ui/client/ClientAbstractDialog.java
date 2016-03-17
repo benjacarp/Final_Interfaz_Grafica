@@ -35,9 +35,9 @@ public abstract class ClientAbstractDialog extends Stage {
     protected TextField campoDNI;
 
     protected Button acceptButton;
-    private Button cancelButton;
-    private Button fileChooser;
-    private TextField fileField;
+    protected Button cancelButton;
+    protected Button fileChooser;
+    protected TextField fileField;
 
     protected Image image;
     protected ImageView imageView;
