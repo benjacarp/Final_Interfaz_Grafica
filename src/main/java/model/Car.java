@@ -19,6 +19,7 @@ public class Car {
     private String marca;
     private Blob photo;
     private boolean available;
+    private double price;
 
     public Car() {
     }
@@ -53,6 +54,14 @@ public class Car {
 
     public void setAvailable(boolean available) {
         this.available = available;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     @Override

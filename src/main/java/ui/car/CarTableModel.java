@@ -3,12 +3,17 @@ package ui.car;
 import exception.DIGAppException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Pos;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 import model.Car;
 import service.CarService;
 
+import java.awt.*;
 import java.util.List;
 
 /**
@@ -18,11 +23,12 @@ public class CarTableModel extends TableView<Car>{
 
     private TableColumn<Car, String> marcaColumn;
     private TableColumn<Car, String> patenteColumn;
+    private TableColumn<Car, Double> priceColumn;
 
     public CarTableModel(int minWidth, int minHeight) {
         mapColumns();
         update();
-        this.getColumns().addAll(marcaColumn, patenteColumn);
+        this.getColumns().addAll(marcaColumn, patenteColumn, priceColumn);
         this.prefWidth(minWidth);
         this.prefHeight(minHeight);
     }
@@ -48,12 +54,16 @@ public class CarTableModel extends TableView<Car>{
 
     private void mapColumns() {
         marcaColumn = new TableColumn<>("Marca");
-        marcaColumn.setPrefWidth(200);
+        marcaColumn.setPrefWidth(100);
         marcaColumn.setCellValueFactory(new PropertyValueFactory<>("marca"));
 
         patenteColumn = new TableColumn<>("Patente");
-        patenteColumn.setPrefWidth(200);
+        patenteColumn.setPrefWidth(100);
         patenteColumn.setCellValueFactory(new PropertyValueFactory<>("patente"));
+
+        priceColumn = new TableColumn<>("Precio");
+        priceColumn.setPrefWidth(50);
+        priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
 
     }
 }
