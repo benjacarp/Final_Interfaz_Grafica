@@ -4,6 +4,7 @@ import javafx.stage.Stage;
 import ui.car.CarFrame;
 import ui.client.ClientFrame;
 import ui.prestamo.DevolucionDialog;
+import ui.prestamo.PrestamoHistoryDialog;
 
 /**
  * Created by benjamin.salas on 01/03/2016.
@@ -33,7 +34,8 @@ public class MainController {
     }
 
     public void prestamoClick() {
-        System.out.println("ver Prestamos");
+        Stage stage = new PrestamoHistoryDialog();
+        stage.show();
     }
 
     public void nuevoPrestamoClick() {
