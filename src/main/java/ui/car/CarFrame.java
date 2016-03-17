@@ -42,14 +42,22 @@ public class CarFrame extends Stage{
 
     private void initComponents() {
 
-        //imagen por default
         imageView = new ImageView();
-        imageView.setFitHeight(200);
+        imageView.setFitHeight(150);
         imageView.setFitWidth(200);
         imageView.setPreserveRatio(false);
         image = new Image("/default_car.jpg");
         imageView.setImage(image);
 
         table = new CarTableModel(300,300);
+        table.getSelectionModel().selectedIndexProperty().addListener(e -> controller.changeTableSelection());
+    }
+
+    public CarTableModel getTable() {
+        return table;
+    }
+
+    public ImageView getImageView() {
+        return imageView;
     }
 }
