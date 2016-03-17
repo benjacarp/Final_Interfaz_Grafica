@@ -138,4 +138,12 @@ public class CarFrame extends Stage{
     public Label getLblAvailability() {
         return lblAvailability;
     }
+
+    public Button getBtnPrestamo() {
+        return btnPrestamo;
+    }
+
+    public void setBtnPrestamo(Button btnPrestamo) {
+        this.btnPrestamo = btnPrestamo;
+    }
 }
