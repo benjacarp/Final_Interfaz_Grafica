@@ -9,7 +9,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.Car;
+import model.Prestamo;
 import service.CarService;
+import service.PrestamoService;
 import ui.client.ComboClient;
 
 /**
@@ -54,6 +56,18 @@ public class PrestamoDialog extends Stage{
 
     private void confirmPrestamo() {
         System.out.println("Confirmado");
+
+        Prestamo prestamo = new Prestamo();
+        prestamo.setCar(car);
+        prestamo.setClient(comboClient.getSelectedClient());
+        prestamo.setActive(true);
+
+        try {
+            PrestamoService.getInstance().save(prestamo);
+        } catch (DIGAppException e) {
+            e.printStackTrace();
+        }
+
         car.setAvailable(false);
         try {
             CarService.getInstance().update(car);

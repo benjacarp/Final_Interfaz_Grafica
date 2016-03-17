@@ -1,6 +1,13 @@
 package model;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  * Created by ASUS on 17/03/2016.
@@ -10,9 +17,8 @@ import javax.persistence.*;
 public class Prestamo {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(nullable = false, unique = true, length = 7)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
     @ManyToOne
     @JoinColumn(name = "client_dni", nullable = false)
@@ -22,11 +28,13 @@ public class Prestamo {
     @JoinColumn(name = "car_patente", nullable = false)
     private Car car;
 
-    public String getId() {
+    private boolean active;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -44,5 +52,13 @@ public class Prestamo {
 
     public void setCar(Car car) {
         this.car = car;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }

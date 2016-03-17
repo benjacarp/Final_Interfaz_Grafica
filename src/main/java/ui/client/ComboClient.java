@@ -32,7 +32,7 @@ public class ComboClient extends ComboBox {
         }
     }
 
-    public Client getEmployee(){
+    public Client getSelectedClient(){
         return (Client) this.getSelectionModel().getSelectedItem();
     }
 }
