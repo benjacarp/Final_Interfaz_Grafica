@@ -95,7 +95,7 @@ public class CarFrameController extends GenericController{
         System.out.println("Nuevo prestamo");
         PrestamoDialog stage = new PrestamoDialog(currentCar);
         stage.showAndWait();
-
+        view.getTable().update();
     }
 
     public void updateClick() {

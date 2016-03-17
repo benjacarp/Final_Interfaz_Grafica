@@ -27,7 +27,7 @@ public class CarTableModel extends TableView<Car>{
         this.prefHeight(minHeight);
     }
 
-    private void update() {
+    public void update() {
         ObservableList<Car> cars = FXCollections.observableArrayList();
 
         List<Car> carsArray = null;
