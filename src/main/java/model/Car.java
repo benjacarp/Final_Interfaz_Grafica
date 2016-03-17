@@ -16,15 +16,10 @@ public class Car {
     @Id
     @Column(nullable = false, unique = true, length = 7)
     private String patente;
-
     private String marca;
+    private Blob photo;
 
     public Car() {
-    }
-
-    public Car(String marca, String patente) {
-        this.marca = marca;
-        this.patente = patente;
     }
 
     public String getMarca() {
@@ -41,5 +36,13 @@ public class Car {
 
     public void setPatente(String patente) {
         this.patente = patente;
+    }
+
+    public Blob getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(Blob photo) {
+        this.photo = photo;
     }
 }

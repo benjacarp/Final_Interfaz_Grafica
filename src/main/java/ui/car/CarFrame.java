@@ -1,6 +1,8 @@
 package ui.car;
 
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -14,6 +16,8 @@ public class CarFrame extends Stage{
     private CarTableModel table;
     private final CarFrameController controller;
     private BorderPane pane;
+    private ImageView imageView;
+    private Image image ;
 
     public CarFrame() {
         this.controller = new CarFrameController(this);
@@ -23,16 +27,29 @@ public class CarFrame extends Stage{
 
     private void createStage() {
         pane = new BorderPane();
-        VBox vbox = new VBox();
-        vbox.getChildren().add(table);
-        pane.setCenter(vbox);
+        VBox centerVBox = new VBox();
+        centerVBox.getChildren().add(table);
+        pane.setCenter(centerVBox);
 
-        Scene scene = new Scene(pane,532,300);
+        VBox rightVBox = new VBox();
+        rightVBox.getChildren().add(imageView);
+        pane.setRight(rightVBox);
+
+        Scene scene = new Scene(pane,550,300);
         scene.getStylesheets().add("/style.css");
         this.setScene(scene);
     }
 
     private void initComponents() {
+
+        //imagen por default
+        imageView = new ImageView();
+        imageView.setFitHeight(200);
+        imageView.setFitWidth(200);
+        imageView.setPreserveRatio(false);
+        image = new Image("/default_car.jpg");
+        imageView.setImage(image);
+
         table = new CarTableModel(300,300);
     }
 }
