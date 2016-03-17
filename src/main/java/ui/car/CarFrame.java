@@ -1,7 +1,6 @@
 package ui.car;
 
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -13,7 +12,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import jiconfont.icons.FontAwesome;
-import ui.controller.CarTableModel;
+import ui.controller.CarFrameController;
 import ui.main.MainFrame;
 import ui.utils.UIConstants;
 

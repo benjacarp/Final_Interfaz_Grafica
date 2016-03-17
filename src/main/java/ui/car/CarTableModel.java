@@ -1,4 +1,4 @@
-package ui.controller;
+package ui.car;
 
 import exception.DIGAppException;
 import javafx.collections.FXCollections;

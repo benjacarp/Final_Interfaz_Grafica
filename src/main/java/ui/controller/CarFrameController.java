@@ -1,4 +1,4 @@
-package ui.car;
+package ui.controller;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
@@ -7,7 +7,9 @@ import javafx.scene.paint.Paint;
 import model.Car;
 import service.CarService;
 import service.ClientService;
+import ui.car.CarFrame;
 import ui.controller.GenericController;
+import ui.prestamo.PrestamoDialog;
 import ui.utils.UIConstants;
 
 import javax.imageio.ImageIO;
@@ -56,10 +58,10 @@ public class CarFrameController extends GenericController{
         view.getLblMarca().setText(currentCar.getMarca());
         view.getLblPatente().setText(currentCar.getPatente());
         if (currentCar.isAvailable()) {
-            view.getLblAvailability().setText(UIConstants.UNAVAILABLE_MSG);
+            view.getLblAvailability().setText(UIConstants.AVAILABLE_MSG);
             view.getLblAvailability().setTextFill(UIConstants.AVAILABLE_COLOR);
         } else {
-            view.getLblAvailability().setText(UIConstants.AVAILABLE_MSG);
+            view.getLblAvailability().setText(UIConstants.UNAVAILABLE_MSG);
             view.getLblAvailability().setTextFill(UIConstants.UNAVAILABLE_COLOR);
         }
     }
@@ -91,6 +93,9 @@ public class CarFrameController extends GenericController{
 
     public void nuevoPrestamo() {
         System.out.println("Nuevo prestamo");
+        PrestamoDialog stage = new PrestamoDialog(currentCar);
+        stage.showAndWait();
+
     }
 
     public void updateClick() {
