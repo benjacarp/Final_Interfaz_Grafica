@@ -18,6 +18,7 @@ public class Car {
     private String patente;
     private String marca;
     private Blob photo;
+    private boolean available;
 
     public Car() {
     }
@@ -44,5 +45,13 @@ public class Car {
 
     public void setPhoto(Blob photo) {
         this.photo = photo;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 }

@@ -2,6 +2,7 @@ package ui.car;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 import model.Car;
 import service.CarService;
 import service.ClientService;
@@ -52,6 +53,13 @@ public class CarFrameController extends GenericController{
     private void cargarInfo(Car currentCar) {
         view.getLblMarca().setText(currentCar.getMarca());
         view.getLblPatente().setText(currentCar.getPatente());
+        if (currentCar.isAvailable()) {
+            view.getLblAvailability().setText("Available");
+            view.getLblAvailability().setTextFill(Color.GREEN);
+        } else {
+            view.getLblAvailability().setText("Unavailable");
+            view.getLblAvailability().setTextFill(Color.RED);
+        }
     }
 
     private void cargarImagen(Car currentCar) {

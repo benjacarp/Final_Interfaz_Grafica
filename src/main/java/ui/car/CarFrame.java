@@ -27,6 +27,7 @@ public class CarFrame extends Stage{
     //panel info
     private Label lblMarca;
     private Label lblPatente;
+    private Label lblAvailability;
 
     public CarFrame() {
         this.controller = new CarFrameController(this);
@@ -46,6 +47,7 @@ public class CarFrame extends Stage{
         rightVBox.getChildren().add(imageView);
         rightVBox.getChildren().add(hBoxCreator("Marca: ",lblMarca));
         rightVBox.getChildren().add(hBoxCreator("Patente: ",lblPatente));
+        rightVBox.getChildren().add(lblAvailability);
         pane.setRight(rightVBox);
 
         Scene scene = new Scene(pane,550,300);
@@ -73,6 +75,7 @@ public class CarFrame extends Stage{
         //info
         lblMarca = new Label("");
         lblPatente = new Label("");
+        lblAvailability = new Label("");
 
         btnPrestamo = new Button("Nuevo Prestamo");
         btnPrestamo.setPrefWidth(100);
@@ -97,5 +100,9 @@ public class CarFrame extends Stage{
 
     public Label getLblPatente() {
         return lblPatente;
+    }
+
+    public Label getLblAvailability() {
+        return lblAvailability;
     }
 }
