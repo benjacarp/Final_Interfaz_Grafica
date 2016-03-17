@@ -1,6 +1,6 @@
 package ui.controller;
 
-import exception.GestionAppException;
+import exception.DIGAppException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
@@ -34,7 +34,7 @@ public class CarTableModel extends TableView<Car>{
         try {
             carsArray = CarService.getInstance().findAll();
 
-        } catch (GestionAppException e) {
+        } catch (DIGAppException e) {
             e.printStackTrace();
         }
 

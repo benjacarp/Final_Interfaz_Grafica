@@ -1,6 +1,6 @@
 package ui.client;
 
-import exception.GestionAppException;
+import exception.DIGAppException;
 import model.Client;
 import service.ClientService;
 
@@ -29,7 +29,7 @@ public class ClientNewDialog extends ClientAbstractDialog{
         try {
             ClientService.getInstance().save(client);
             alertClients(client, false);
-        } catch (GestionAppException e) {
+        } catch (DIGAppException e) {
             e.printStackTrace();
         }
         this.close();

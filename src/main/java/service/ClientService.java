@@ -1,8 +1,8 @@
 package service;
 
 import dao.ClientDAO;
+import exception.DIGAppException;
 import exception.DataAccessException;
-import exception.GestionAppException;
 import model.Client;
 
 import java.util.List;
@@ -24,11 +24,11 @@ public class ClientService extends GenericService<Client, Long> {
     }
 
     @Override
-    public List<Client> findBySearch(String searchString) throws GestionAppException {
+    public List<Client> findBySearch(String searchString) throws DIGAppException {
         try {
             return this.clientDAO.findObjectsBySearch(searchString);
         } catch (DataAccessException e) {
-            throw new GestionAppException(e);
+            throw new DIGAppException(e);
         }
     }
 }

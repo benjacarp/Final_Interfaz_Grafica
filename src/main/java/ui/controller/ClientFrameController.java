@@ -1,6 +1,6 @@
 package ui.controller;
 
-import exception.GestionAppException;
+import exception.DIGAppException;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.control.Alert;
@@ -13,7 +13,6 @@ import service.ClientService;
 import ui.client.ClientEditDialog;
 import ui.client.ClientFrame;
 import ui.client.ClientNewDialog;
-import ui.controller.GenericController;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -79,7 +78,7 @@ public class ClientFrameController extends GenericController{
                 try {
                     service.delete(clientToBeDeleted);
                     this.view.getTable().update();
-                } catch (GestionAppException e) {
+                } catch (DIGAppException e) {
                     e.printStackTrace();
                 }
 

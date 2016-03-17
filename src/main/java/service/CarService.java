@@ -2,7 +2,7 @@ package service;
 
 import dao.CarDAO;
 import exception.DataAccessException;
-import exception.GestionAppException;
+import exception.DIGAppException;
 import model.Car;
 
 import java.util.List;
@@ -24,11 +24,11 @@ public class CarService extends GenericService<Car, Long> {
     }
 
     @Override
-    public List<Car> findBySearch(String searchString) throws GestionAppException {
+    public List<Car> findBySearch(String searchString) throws DIGAppException {
         try {
             return this.carDAO.findObjectsBySearch(searchString);
         } catch (DataAccessException e) {
-            throw new GestionAppException(e);
+            throw new DIGAppException(e);
         }
     }
 }

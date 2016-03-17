@@ -1,7 +1,6 @@
 package ui.controller;
 
-import exception.GestionAppException;
-import javafx.fxml.Initializable;
+import exception.DIGAppException;
 import service.GenericService;
 
 import java.util.List;
@@ -21,27 +20,27 @@ public abstract class GenericController<E, I> {
         this.genericService = genericService;
     }
     
-    public I save(E entity) throws GestionAppException {
+    public I save(E entity) throws DIGAppException {
         return this.genericService.save(entity);
     }
     
-    public E update(E entity) throws GestionAppException {
+    public E update(E entity) throws DIGAppException {
         return this.genericService.update(entity);
     }
     
-    public void delete(E entity) throws GestionAppException {
+    public void delete(E entity) throws DIGAppException {
         this.genericService.delete(entity);
     }
     
-    public E findOne(I id) throws GestionAppException {
+    public E findOne(I id) throws DIGAppException {
         return this.genericService.findOne(id);
     }
     
-    public List<E> findAll() throws GestionAppException {
+    public List<E> findAll() throws DIGAppException {
         return this.genericService.findAll();
     }
     
-    public List<E> findBySearch(String searchString) throws GestionAppException {
+    public List<E> findBySearch(String searchString) throws DIGAppException {
         return this.genericService.findBySearch(searchString);
     }
 }

@@ -1,8 +1,7 @@
 package ui.client;
 
-import exception.GestionAppException;
+import exception.DIGAppException;
 import javafx.embed.swing.SwingFXUtils;
-import javafx.scene.image.Image;
 import model.Client;
 import service.ClientService;
 
@@ -63,7 +62,7 @@ public class ClientEditDialog extends ClientAbstractDialog{
         try {
             ClientService.getInstance().update(currentClient);
             alertClients(currentClient, true);
-        } catch (GestionAppException e) {
+        } catch (DIGAppException e) {
             e.printStackTrace();
         }
         this.close();

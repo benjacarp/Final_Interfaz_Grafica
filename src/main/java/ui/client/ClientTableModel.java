@@ -1,6 +1,6 @@
 package ui.client;
 
-import exception.GestionAppException;
+import exception.DIGAppException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
@@ -46,7 +46,7 @@ public class ClientTableModel extends TableView<Client>{
         try {
             clientsArray = ClientService.getInstance().findAll();
 
-        } catch (GestionAppException e) {
+        } catch (DIGAppException e) {
             e.printStackTrace();
         }
 
@@ -65,7 +65,7 @@ public class ClientTableModel extends TableView<Client>{
         try {
             clientsArray = ClientService.getInstance().findBySearch(searchString);
 
-        } catch (GestionAppException e) {
+        } catch (DIGAppException e) {
             e.printStackTrace();
         }
 
