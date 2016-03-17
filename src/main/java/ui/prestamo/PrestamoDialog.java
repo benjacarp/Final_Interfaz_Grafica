@@ -21,6 +21,7 @@ import ui.client.ComboClient;
 public class PrestamoDialog extends Stage{
 
     private Car car;
+    private Button btnSearch;
     private ComboClient comboClient;
     private Label lblCar;
     private Button btnConfirm;
@@ -37,6 +38,7 @@ public class PrestamoDialog extends Stage{
     private void createStage() {
         VBox vBox = new VBox();
         vBox.getChildren().add(lblCar);
+        vBox.getChildren().add(btnSearch);
         vBox.getChildren().add(comboClient);
         vBox.getChildren().add(btnConfirm);
 
@@ -48,11 +50,17 @@ public class PrestamoDialog extends Stage{
     private void initComponents() {
         lblCar = new Label("");
         lblCar.setText(car.toString());
+        btnSearch = new Button("...");
+        btnSearch.setOnAction(event -> btnSearchClick());
 
         btnConfirm = new Button("Confirmar Prestamo");
         btnConfirm.setOnAction(event -> confirmPrestamo());
 
         comboClient = new ComboClient();
+    }
+
+    private void btnSearchClick() {
+        System.out.println("select car...");
     }
 
     private void confirmPrestamo() {

@@ -19,9 +19,13 @@ import ui.utils.UIConstants;
 public class MainFrame extends Stage{
 
     private MenuBar menuBar;
-    private Menu menuEditar;
+    private Menu menuFile;
+    private Menu menuPrestamos;
     private MenuItem menuItemSocios;
     private MenuItem menuItemCars;
+    private MenuItem menuItemNewPrestamo;
+    private MenuItem menuItemPrestamos;
+    private MenuItem menuItemDevolucion;
 
     private MainController controller;
 
@@ -45,18 +49,34 @@ public class MainFrame extends Stage{
     private void initComponents() {
 
         menuBar = new MenuBar();
-        menuEditar = new Menu("Editar");
+        menuFile = new Menu("Archivo");
+        menuPrestamos = new Menu("Prestamos");
         menuItemSocios = new MenuItem("Socios...");
         menuItemCars = new MenuItem("Autos...");
+        menuItemDevolucion = new MenuItem("Devolucion...");
+        menuItemPrestamos = new MenuItem("Ver Prestamos...");
+        menuItemNewPrestamo = new MenuItem("Nuevo Prestamo");
 
-        menuBar.getMenus().add(menuEditar);
-        menuEditar.getItems().add(menuItemSocios);
-        menuEditar.getItems().add(menuItemCars);
+        menuBar.getMenus().add(menuFile);
+        menuBar.getMenus().add(menuPrestamos);
+        menuFile.getItems().add(menuItemSocios);
+        menuFile.getItems().add(menuItemCars);
+        menuPrestamos.getItems().add(menuItemNewPrestamo);
+        menuPrestamos.getItems().add(menuItemDevolucion);
+        menuPrestamos.getItems().add(menuItemPrestamos);
+
 
         menuItemSocios.setGraphic(addIcon(FontAwesome.USER, UIConstants.ICON_STANDAR_SIZE, Color.BLACK));
         menuItemSocios.setOnAction(e -> controller.socioClick());
         menuItemCars.setGraphic(addIcon(FontAwesome.CAR, UIConstants.ICON_STANDAR_SIZE, Color.BLACK));
         menuItemCars.setOnAction(e -> controller.carClick());
+
+        menuItemNewPrestamo.setGraphic(addIcon(FontAwesome.HOURGLASS_START, UIConstants.ICON_STANDAR_SIZE, Color.BLACK));
+        menuItemNewPrestamo.setOnAction(event -> controller.nuevoPrestamoClick());
+        menuItemDevolucion.setGraphic(addIcon(FontAwesome.HOURGLASS_END, UIConstants.ICON_STANDAR_SIZE, Color.BLACK));
+        menuItemDevolucion.setOnAction(event -> controller.devolucionClick());
+        menuItemPrestamos.setGraphic(addIcon(FontAwesome.HISTORY, UIConstants.ICON_STANDAR_SIZE, Color.BLACK));
+        menuItemPrestamos.setOnAction(event -> controller.prestamoClick());
     }
 
     public static Node addIcon(FontAwesome floppyO, int size, Color color) {

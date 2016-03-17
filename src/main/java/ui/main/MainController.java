@@ -25,4 +25,16 @@ public class MainController {
         Stage stage = new CarFrame();
         stage.show();
     }
+
+    public void devolucionClick() {
+        System.out.println("Devolucion");
+    }
+
+    public void prestamoClick() {
+        System.out.println("ver Prestamos");
+    }
+
+    public void nuevoPrestamoClick() {
+        System.out.println("Nuevo Prestamo");
+    }
 }
