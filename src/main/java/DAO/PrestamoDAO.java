@@ -25,4 +25,6 @@ public class PrestamoDAO extends GenericDAO<Prestamo, Long> {
     public List<Prestamo> findObjectsBySearch(String searchString) throws DataAccessException {
         return this.findObjectsBySearch(QUERY_FIND_SUPPLIERS_BY_SEARCH, searchString);
     }
+
+
 }

@@ -2,6 +2,7 @@ package ui.prestamo;
 
 import exception.DIGAppException;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -74,6 +75,17 @@ public class PrestamoDialog extends Stage{
         } catch (DIGAppException e) {
             e.printStackTrace();
         }
+        showAlertNewPrestamo(prestamo);
         this.close();
+    }
+
+    private void showAlertNewPrestamo(Prestamo prestamo) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Nuevo prestamo");
+        alert.setHeaderText("Se creó un nuevo prestamo");
+        alert.setContentText("Nro de prestamo: " + prestamo.getId() +
+                "\n" + "Client: " + prestamo.getClient().toString() +
+                "\n" + prestamo.getCar().toString());
+        alert.showAndWait();
     }
 }

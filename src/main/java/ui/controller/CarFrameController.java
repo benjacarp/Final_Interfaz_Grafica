@@ -1,12 +1,14 @@
 package ui.controller;
 
 import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import model.Car;
 import service.CarService;
 import service.ClientService;
+import service.PrestamoService;
 import ui.car.CarFrame;
 import ui.controller.GenericController;
 import ui.prestamo.PrestamoDialog;
