@@ -89,7 +89,7 @@ public class ClientFrame extends Stage {
 
         pane.setRight(rigth);
 
-        Scene scene = new Scene(pane,432,300);
+        Scene scene = new Scene(pane,532,300);
         scene.getStylesheets().add("/style.css");
         this.setScene(scene);
 

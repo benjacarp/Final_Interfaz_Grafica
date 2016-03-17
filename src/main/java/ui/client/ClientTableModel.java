@@ -23,9 +23,7 @@ public class ClientTableModel extends TableView<Client>{
     public ClientTableModel(int minWidth, int minHeight) {
         mapColumns();
         update();
-//        this.setItems((ObservableList<Client>) ClientService.getInstance().findAll());
         this.getColumns().addAll(nameColumn, dniColumn);
-
         this.prefWidth(minWidth);
         this.prefHeight(minHeight);
     }

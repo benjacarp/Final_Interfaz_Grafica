@@ -33,6 +33,7 @@
         
         <!-- Mapped classes -->
         <mapping class="model.Client" />
+        <mapping class="model.Car" />
 
     </session-factory>
 

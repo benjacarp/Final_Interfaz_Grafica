@@ -1,6 +1,7 @@
 package ui;
 
 import javafx.stage.Stage;
+import ui.car.CarFrame;
 import ui.client.ClientFrame;
 
 /**
@@ -18,7 +19,8 @@ public class MainController {
         System.out.println("Oooh do that again");
         this.view.getButton().setText("Click Again!");
 
-        Stage stage = new ClientFrame();
+//        Stage stage = new ClientFrame();
+        Stage stage = new CarFrame();
         stage.show();
     }
 }

@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by ASUS on 04/03/2016.
  */
-public class ClientService  extends GenericService<Client, Long> {
+public class ClientService extends GenericService<Client, Long> {
     private static final ClientService INSTANCE = new ClientService();
     private final ClientDAO clientDAO;
 

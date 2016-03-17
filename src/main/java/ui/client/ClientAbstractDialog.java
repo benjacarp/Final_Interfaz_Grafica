@@ -47,7 +47,13 @@ public abstract class ClientAbstractDialog extends Stage {
         this.initModality(Modality.APPLICATION_MODAL);
 
         initComponents();
+        initActions();
         createStage();
+    }
+
+    private void initActions() {
+        fileChooser.setOnAction(event -> openFileChooser());
+        acceptButton.setOnAction(event -> guardar());
     }
 
     private void createStage() {
@@ -70,7 +76,7 @@ public abstract class ClientAbstractDialog extends Stage {
         HBox hBox = new HBox();
         fileField = new TextField();
         hBox.getChildren().add(fileField);
-        GridPane.setConstraints(fileChooser,1,2);      //campo para elegir foto dsd la maquina
+        GridPane.setConstraints(fileChooser,1,2);
         hBox.getChildren().add(fileChooser);
         GridPane.setConstraints(hBox,1,2);
         GridPane.setConstraints(imageView,1,3);
@@ -95,10 +101,8 @@ public abstract class ClientAbstractDialog extends Stage {
         campoDNI = new TextField();
         campoNombre = new TextField();
         fileChooser = new Button("...");
-        fileChooser.setOnAction(event -> openFileChooser());
 
         acceptButton = new Button("Aceptar");
-        acceptButton.setOnAction(event -> guardar());
         cancelButton = new Button("Cancelar");
     }
 
