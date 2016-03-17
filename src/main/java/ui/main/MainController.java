@@ -3,6 +3,7 @@ package ui.main;
 import javafx.stage.Stage;
 import ui.car.CarFrame;
 import ui.client.ClientFrame;
+import ui.prestamo.DevolucionDialog;
 
 /**
  * Created by benjamin.salas on 01/03/2016.
@@ -27,7 +28,8 @@ public class MainController {
     }
 
     public void devolucionClick() {
-        System.out.println("Devolucion");
+        Stage stage = new DevolucionDialog();
+        stage.show();
     }
 
     public void prestamoClick() {
