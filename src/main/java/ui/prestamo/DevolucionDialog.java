@@ -1,5 +1,6 @@
 package ui.prestamo;
 
+import exception.DIGAppException;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -8,6 +9,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import model.Prestamo;
+import service.CarService;
+import service.PrestamoService;
 
 /**
  * Created by ASUS on 17/03/2016.
@@ -40,5 +44,26 @@ public class DevolucionDialog extends Stage {
     private void initComponents() {
         prestamoNumber = new TextField();
         btnDevolucion = new Button("Devolver");
+        btnDevolucion.setOnAction(event -> devolver());
+    }
+
+    private void devolver() {
+        String number = prestamoNumber.getText();
+        Prestamo prestamo = null;
+        try {
+            prestamo = PrestamoService.getInstance().findOne(Long.valueOf(number));
+        } catch (DIGAppException e) {
+            e.printStackTrace();
+        }
+
+        prestamo.setActive(false);
+        prestamo.getCar().setAvailable(true);
+
+        try {
+            PrestamoService.getInstance().update(prestamo);
+            CarService.getInstance().update(prestamo.getCar());
+        } catch (DIGAppException e) {
+            e.printStackTrace();
+        }
     }
 }
