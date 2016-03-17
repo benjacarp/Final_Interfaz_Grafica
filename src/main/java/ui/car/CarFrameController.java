@@ -3,10 +3,12 @@ package ui.car;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import model.Car;
 import service.CarService;
 import service.ClientService;
 import ui.controller.GenericController;
+import ui.utils.UIConstants;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -54,11 +56,11 @@ public class CarFrameController extends GenericController{
         view.getLblMarca().setText(currentCar.getMarca());
         view.getLblPatente().setText(currentCar.getPatente());
         if (currentCar.isAvailable()) {
-            view.getLblAvailability().setText("Available");
-            view.getLblAvailability().setTextFill(Color.GREEN);
+            view.getLblAvailability().setText(UIConstants.UNAVAILABLE_MSG);
+            view.getLblAvailability().setTextFill(UIConstants.AVAILABLE_COLOR);
         } else {
-            view.getLblAvailability().setText("Unavailable");
-            view.getLblAvailability().setTextFill(Color.RED);
+            view.getLblAvailability().setText(UIConstants.AVAILABLE_MSG);
+            view.getLblAvailability().setTextFill(UIConstants.UNAVAILABLE_COLOR);
         }
     }
 
