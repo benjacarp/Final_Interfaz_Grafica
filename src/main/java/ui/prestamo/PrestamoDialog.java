@@ -1,10 +1,10 @@
 package ui.prestamo;
 
 import exception.DIGAppException;
+import exception.FileGenerationException;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -15,6 +15,7 @@ import service.CarService;
 import service.PrestamoService;
 import ui.car.ComboCar;
 import ui.client.ComboClient;
+import util.PrestamoInvoiceFactory;
 
 /**
  * Created by ASUS on 17/03/2016.
@@ -88,6 +89,15 @@ public class PrestamoDialog extends Stage{
             e.printStackTrace();
         }
         showAlertNewPrestamo(prestamo);
+
+        if (prestamo != null) {
+            try {
+                PrestamoInvoiceFactory.generateInvoice(prestamo);
+            } catch (FileGenerationException ex) {
+                ex.printStackTrace();
+            }
+        }
+
         this.close();
     }
 

@@ -12,6 +12,7 @@ if (!hasProperty('mainClass')) {
 }
 
 dependencies {
+    compile 'org.apache.commons:commons-lang3:3.0'
     compile group: 'com.guigarage', name: 'flatter', version: '0.7'
     compile 'org.jfxtras:jfxtras-agenda:8.0-r4'
     compile 'de.jensd:fontawesomefx:8.9'
@@ -20,6 +21,8 @@ dependencies {
     compile 'com.github.jiconfont:jiconfont:1.0.0'
     compile 'com.github.jiconfont:jiconfont-bundle:1.2.1'
     compile 'log4j:log4j:1.2.16'
+    compile 'com.itextpdf:itextpdf:5.4.4'
+    compile 'org.jopendocument:jOpenDocument:1.3b1'
 
     //database
     compile 'mysql:mysql-connector-java:5.1.6'
