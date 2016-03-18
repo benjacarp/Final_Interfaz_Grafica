@@ -38,7 +38,9 @@ public class CarFrameController extends GenericController{
 
     public void changeTableSelection() {
         this.currentCar = view.getTable().getSelectionModel().getSelectedItem();
-        this.view.getBtnPrestamo().setDisable(!currentCar.isAvailable());
+        if (currentCar != null) {
+            this.view.getBtnPrestamo().setDisable(!currentCar.isAvailable());
+        }
 
         cargarDatos(currentCar);
     }

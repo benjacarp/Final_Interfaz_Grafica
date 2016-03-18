@@ -13,6 +13,8 @@ import model.Prestamo;
 import service.CarService;
 import service.PrestamoService;
 
+import java.util.Date;
+
 /**
  * Created by ASUS on 17/03/2016.
  */
@@ -21,6 +23,8 @@ public class DevolucionDialog extends Stage {
     private final long id;
     private TextField prestamoNumber;
     private Button btnDevolucion;
+    private Label lblDate;
+    private Date date;
 
     public DevolucionDialog(long id) {
         this.initStyle(StageStyle.UTILITY);
@@ -37,6 +41,7 @@ public class DevolucionDialog extends Stage {
         vBox.getChildren().add(new Label("Nro. de Prestamo"));
         vBox.getChildren().add(prestamoNumber);
         vBox.getChildren().add(btnDevolucion);
+        vBox.getChildren().add(lblDate);
 
         Scene scene = new Scene(vBox,300,300);
         scene.getStylesheets().add("/style.css");
@@ -50,6 +55,10 @@ public class DevolucionDialog extends Stage {
         }
         btnDevolucion = new Button("Devolver");
         btnDevolucion.setOnAction(event -> devolver());
+
+        lblDate = new Label();
+        date = new Date();
+        lblDate.setText(date.getDate() + "/" + (date.getMonth()+1) + "/" + (1900 + date.getYear()));
     }
 
     private void devolver() {
@@ -63,6 +72,7 @@ public class DevolucionDialog extends Stage {
 
         prestamo.setActive(false);
         prestamo.getCar().setAvailable(true);
+        prestamo.setEnd(date);
 
         try {
             PrestamoService.getInstance().update(prestamo);

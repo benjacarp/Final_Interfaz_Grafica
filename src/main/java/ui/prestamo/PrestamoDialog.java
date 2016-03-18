@@ -5,6 +5,7 @@ import exception.FileGenerationException;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -17,6 +18,8 @@ import ui.car.ComboCar;
 import ui.client.ComboClient;
 import util.PrestamoInvoiceFactory;
 
+import java.util.Date;
+
 /**
  * Created by ASUS on 17/03/2016.
  */
@@ -27,6 +30,8 @@ public class PrestamoDialog extends Stage{
     private ComboClient comboClient;
     private ComboCar comboCar;
     private Button btnConfirm;
+    private Label lblDate;
+    private Date date;
 
     public PrestamoDialog(Car car) {
         this.initStyle(StageStyle.UTILITY);
@@ -43,6 +48,7 @@ public class PrestamoDialog extends Stage{
         vBox.getChildren().add(btnSearch);
         vBox.getChildren().add(comboClient);
         vBox.getChildren().add(btnConfirm);
+        vBox.getChildren().add(lblDate);
 
         Scene scene = new Scene(vBox,300,300);
         scene.getStylesheets().add("/style.css");
@@ -62,6 +68,10 @@ public class PrestamoDialog extends Stage{
         if (car != null) {
             comboCar.getSelectionModel().select(car);
         }
+
+        lblDate = new Label();
+        date = new Date();
+        lblDate.setText(date.getDate() + "/" + (date.getMonth()+1) + "/" + (1900 + date.getYear()));
     }
 
     private void btnSearchClick() {
@@ -75,6 +85,8 @@ public class PrestamoDialog extends Stage{
         prestamo.setCar(comboCar.getSelectedCar());
         prestamo.setClient(comboClient.getSelectedClient());
         prestamo.setActive(true);
+        prestamo.setStart(date);
+        prestamo.setEnd(date);
 
         try {
             PrestamoService.getInstance().save(prestamo);

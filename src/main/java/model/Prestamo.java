@@ -1,13 +1,7 @@
 package model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by ASUS on 17/03/2016.
@@ -29,6 +23,14 @@ public class Prestamo {
     private Car car;
 
     private boolean active;
+
+    @Column(nullable = false)
+    @Temporal(TemporalType.DATE)
+    private Date start;
+
+    //@Column(nullable = false)
+    @Temporal(TemporalType.DATE)
+    private Date end;
 
     public Long getId() {
         return id;
@@ -60,5 +62,21 @@ public class Prestamo {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public Date getEnd() {
+        return end;
+    }
+
+    public void setEnd(Date end) {
+        this.end = end;
+    }
+
+    public Date getStart() {
+        return start;
+    }
+
+    public void setStart(Date start) {
+        this.start = start;
     }
 }
