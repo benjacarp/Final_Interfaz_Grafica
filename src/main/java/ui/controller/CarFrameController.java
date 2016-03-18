@@ -1,7 +1,9 @@
 package ui.controller;
 
+import exception.DIGAppException;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -9,7 +11,10 @@ import model.Car;
 import service.CarService;
 import service.ClientService;
 import service.PrestamoService;
+import ui.car.CarEditDialog;
 import ui.car.CarFrame;
+import ui.car.CarNewDialog;
+import ui.client.ClientEditDialog;
 import ui.controller.GenericController;
 import ui.prestamo.PrestamoDialog;
 import ui.utils.UIConstants;
@@ -20,6 +25,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.util.Optional;
 
 /**
  * Created by ASUS on 16/03/2016.
@@ -60,15 +66,22 @@ public class CarFrameController extends GenericController{
     }
 
     private void cargarInfo(Car currentCar) {
-        view.getLblMarca().setText(currentCar.getMarca());
-        view.getLblPatente().setText(currentCar.getPatente());
-        view.gettLblPrecio().setText(String.valueOf(currentCar.getPrice()));
-        if (currentCar.isAvailable()) {
-            view.getLblAvailability().setText(UIConstants.AVAILABLE_MSG);
-            view.getLblAvailability().setTextFill(UIConstants.AVAILABLE_COLOR);
+        if (currentCar == null) {
+            view.getLblMarca().setText("");
+            view.getLblPatente().setText("");
+            view.gettLblPrecio().setText("");
+            view.getLblAvailability().setText("");
         } else {
-            view.getLblAvailability().setText(UIConstants.UNAVAILABLE_MSG);
-            view.getLblAvailability().setTextFill(UIConstants.UNAVAILABLE_COLOR);
+            view.getLblMarca().setText(currentCar.getMarca());
+            view.getLblPatente().setText(currentCar.getPatente());
+            view.gettLblPrecio().setText(String.valueOf(currentCar.getPrice()));
+            if (currentCar.isAvailable()) {
+                view.getLblAvailability().setText(UIConstants.AVAILABLE_MSG);
+                view.getLblAvailability().setTextFill(UIConstants.AVAILABLE_COLOR);
+            } else {
+                view.getLblAvailability().setText(UIConstants.UNAVAILABLE_MSG);
+                view.getLblAvailability().setTextFill(UIConstants.UNAVAILABLE_COLOR);
+            }
         }
     }
 
@@ -106,13 +119,40 @@ public class CarFrameController extends GenericController{
 
     public void updateClick() {
         System.out.println("Update selected CAR" + currentCar);
+        CarEditDialog stage = new CarEditDialog(currentCar);
+        stage.showAndWait();
+        view.getTable().update();
     }
 
     public void deleteClick() {
         System.out.println("Delete selected CAR" + currentCar);
+        Car car = view.getTable().getSelectionModel().getSelectedItem();
+        if (car != null) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation Needed");
+            alert.setHeaderText("You are about to delete: " + car.getMarca() + "(dni: " + car.getPatente() + ")");
+            alert.setContentText("Are you ok with this?");
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+
+                try {
+                    service.delete(car);
+                    this.view.getTable().update();
+                    cargarInfo(null);
+                } catch (DIGAppException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }
+
     }
 
     public void newClicked() {
+        CarNewDialog stage = new CarNewDialog();
+        stage.showAndWait();
+        view.getTable().update();
         System.out.println("New Car");
     }
 }
