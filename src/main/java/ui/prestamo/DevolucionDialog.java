@@ -18,13 +18,15 @@ import service.PrestamoService;
  */
 public class DevolucionDialog extends Stage {
 
+    private final long id;
     private TextField prestamoNumber;
     private Button btnDevolucion;
 
-    public DevolucionDialog() {
+    public DevolucionDialog(long id) {
         this.initStyle(StageStyle.UTILITY);
         this.initModality(Modality.APPLICATION_MODAL);
 
+        this.id = id;
         initComponents();
         createStage();
     }
@@ -43,6 +45,9 @@ public class DevolucionDialog extends Stage {
 
     private void initComponents() {
         prestamoNumber = new TextField();
+        if (id != 0) {
+            prestamoNumber.setText(String.valueOf(id));
+        }
         btnDevolucion = new Button("Devolver");
         btnDevolucion.setOnAction(event -> devolver());
     }

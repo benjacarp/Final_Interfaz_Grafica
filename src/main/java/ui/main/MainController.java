@@ -29,7 +29,7 @@ public class MainController {
     }
 
     public void devolucionClick() {
-        Stage stage = new DevolucionDialog();
+        Stage stage = new DevolucionDialog(0);
         stage.show();
     }
 

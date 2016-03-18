@@ -44,7 +44,9 @@ public class PrestamoTable extends TableView<Prestamo> {
         }
 
         for (Prestamo c : prestamoList) {
-            prestamos.add(c);
+            if (c.isActive()) {
+                prestamos.add(c);
+            }
         }
 
         setItems(prestamos);
@@ -63,6 +65,5 @@ public class PrestamoTable extends TableView<Prestamo> {
         carColumn = new TableColumn<>("Auto");
         carColumn.setPrefWidth(100);
         carColumn.setCellValueFactory(new PropertyValueFactory<>("car"));
-
     }
 }
