@@ -1,3 +1,4 @@
+/*
 package util;
 
 import com.itextpdf.text.Document;
@@ -12,9 +13,11 @@ import model.Prestamo;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
+*/
 /**
  * Created by ASUS on 18/03/2016.
- */
+ *//*
+
 public class FacturaInvoiceFactory extends PrestamoInvoiceFactory {
 
     protected static String generatePDF(Prestamo prestamo) throws DocumentException, FileNotFoundException {
@@ -71,9 +74,9 @@ public class FacturaInvoiceFactory extends PrestamoInvoiceFactory {
                 .append(" Nº 0000000")
                 .append(String.valueOf(pretamoId))
                 .append(NEW_LINE)
-//                .append("Fecha: ")
-//                .append(DATE_FORMAT.format(prestamo.getDate()))
-//                .append(NEW_LINE)
+                .append("Fecha: ")
+                .append(DATE_FORMAT.format(prestamo.getDate()))
+                .append(NEW_LINE)
                 .append(SEPARATOR)
                 .toString());
         document.add(paragraph);
@@ -91,28 +94,12 @@ public class FacturaInvoiceFactory extends PrestamoInvoiceFactory {
                 .toString());
         document.add(paragraph);
 
-//        PdfPTable table = new PdfPTable(5);
-//        table.addCell("ISBN");
-//        table.addCell("DESCRIPCION");
-//        table.addCell("PRECIO UNIT");
-//        table.addCell("CANTIDAD");
-//        table.addCell("IMPORTE");
-
-//        Book book = null;
-//        for(SaleDetail detail: prestamo.getSaleDetails()) {
-//            book = detail.getBook();
-//            table.addCell(book.getIsbn());
-//            table.addCell(book.getTitle());
-//            table.addCell(String.valueOf(book.getPrice()));
-//            table.addCell(String.valueOf(detail.getQuantity()));
-//            table.addCell(String.valueOf(detail.getAmount()));
-//        }
-//        document.add(table);
-
         stringBuilder.setLength(0);
         paragraph = new Paragraph();
         Car car = prestamo.getCar();
         paragraph.add(stringBuilder
+                .append("Auto")
+                .append(NEW_LINE)
                 .append(car.getMarca())
                 .append(NEW_LINE)
                 .append("Chapa: ")
@@ -121,22 +108,15 @@ public class FacturaInvoiceFactory extends PrestamoInvoiceFactory {
                 .append("Precio por dia: $")
                 .append(car.getPrice())
                 .append(NEW_LINE)
+                .append("Dias: ")
+                .append(prestamo.getDays())
+                .append(NEW_LINE)
+                .append("Total: $")
+                .append(prestamo.getTotal())
+                .append(NEW_LINE)
                 .append(SEPARATOR)
                 .toString());
         document.add(paragraph);
-//
-//        stringBuilder.setLength(0);
-//        paragraph = new Paragraph();
-//        paragraph.add(stringBuilder
-//                .append(NEW_LINE)
-//                .append("TOTAL ")
-//                .append(TABULAR)
-//                .append(" $ ")
-//                .append(TABULAR)
-//                .append(prestamo.getTotalAmount())
-//                .append(NEW_LINE)
-//                .toString());
-//        document.add(paragraph);
 
         document.close();
 
@@ -145,4 +125,13 @@ public class FacturaInvoiceFactory extends PrestamoInvoiceFactory {
 
         return fileName;
     }
+
+    protected static String getFileName(long pretamoId) {
+        return new StringBuilder()
+                .append("Factura 00000")
+                .append(pretamoId)
+                .append(FILE_FORMAT)
+                .toString();
+    }
 }
+*/

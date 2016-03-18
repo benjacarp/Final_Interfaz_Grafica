@@ -1,6 +1,7 @@
 package ui.prestamo;
 
 import exception.DIGAppException;
+import exception.FileGenerationException;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -12,6 +13,8 @@ import javafx.stage.StageStyle;
 import model.Prestamo;
 import service.CarService;
 import service.PrestamoService;
+import util.FraInvoiceFactory;
+import util.PrestamoInvoiceFactory;
 
 import java.util.Date;
 
@@ -73,6 +76,8 @@ public class DevolucionDialog extends Stage {
         prestamo.setActive(false);
         prestamo.getCar().setAvailable(true);
         prestamo.setEnd(date);
+        prestamo.calcularDias();
+        prestamo.calcularTotal();
 
         try {
             PrestamoService.getInstance().update(prestamo);
@@ -80,5 +85,16 @@ public class DevolucionDialog extends Stage {
         } catch (DIGAppException e) {
             e.printStackTrace();
         }
+
+        if (prestamo != null) {
+            try {
+                FraInvoiceFactory.generateInvoice(prestamo);
+            } catch (FileGenerationException ex) {
+                ex.printStackTrace();
+            }
+        }
+
+        this.close();
+
     }
 }

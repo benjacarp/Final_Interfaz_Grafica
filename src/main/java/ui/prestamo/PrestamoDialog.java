@@ -87,6 +87,8 @@ public class PrestamoDialog extends Stage{
         prestamo.setActive(true);
         prestamo.setStart(date);
         prestamo.setEnd(date);
+        prestamo.calcularDias();
+        prestamo.calcularTotal();
 
         try {
             PrestamoService.getInstance().save(prestamo);

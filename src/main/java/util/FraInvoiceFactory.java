@@ -6,6 +6,8 @@ import com.itextpdf.text.Element;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import exception.FileGenerationException;
+import model.Car;
+import model.Client;
 import model.Prestamo;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
@@ -75,52 +77,91 @@ public class FraInvoiceFactory {
 
         document.open();
 
-        Paragraph paragraph = new Paragraph("Contrato");
+        Paragraph paragraph = new Paragraph("Factura B");
         paragraph.setAlignment(Element.ALIGN_CENTER);
-        paragraph.add(NEW_LINE);
-        paragraph.add(NEW_LINE);
         document.add(paragraph);
 
-        Date date = prestamo.getStart();
         StringBuilder stringBuilder = new StringBuilder();
         paragraph = new Paragraph();
         paragraph.add(stringBuilder
-                .append("" + date.getDate() + "/" + (date.getMonth()+1) + "/" + (1900 + date.getYear()))
+                .append("AutosYa SRL")
                 .append(NEW_LINE)
-                .append("San Miguel de Tucumán")
+                .append("C.U.I.T: 20-34953806-8")
                 .append(NEW_LINE)
+                .append("Ing. Brutos: 901 174423-2")
                 .append(NEW_LINE)
+                .append("Esquiu 1591 - Provincia de Tucumán")
+                .append(NEW_LINE)
+                .append("Tel. 0381-434-9999/1")
+                .append(NEW_LINE)
+                .append("Tel. 0381-431-8888/1")
+                .append(NEW_LINE)
+                .append("Inicio de Actividades: 02/10/00")
+                .append(NEW_LINE)
+                .append("IVA RESPONSABLE INSCRIPTO")
+                .append(NEW_LINE)
+                .append(SEPARATOR)
                 .toString());
-        paragraph.setAlignment(Element.ALIGN_RIGHT);
+        document.add(paragraph);
+
+        stringBuilder.setLength(0);
+        paragraph = new Paragraph();
+        paragraph.add("ORIGINAL\n");
+        paragraph.setAlignment(Element.ALIGN_CENTER);
         document.add(paragraph);
 
         stringBuilder.setLength(0);
         paragraph = new Paragraph();
         paragraph.add(stringBuilder
-                .append("En el día de la fecha, se celebra el préstamo del vehiculo " + prestamo.getCar().getMarca())
-                .append(" en perfectas condiciones al sr/sra " + prestamo.getClient().getName())
-                .append(" quien se compromete a entregarlo en las mismas condiciones en la cual fue recibido, debiendo pagar $")
-                .append("" + prestamo.getCar().getPrice())
-                .append(" por cada día, hasta el día en que sea devuelto.")
+                .append("COMPROBANTE ")
+//                .append(DEFAULT_INVOICE_TYPE)
+                .append(" Nº 0000000")
+                .append(String.valueOf(pretamoId))
+                .append(NEW_LINE)
+                .append("Fecha: ")
+                .append(DATE_FORMAT.format(prestamo.getEnd()))
+                .append(NEW_LINE)
+                .append(SEPARATOR)
                 .toString());
         document.add(paragraph);
 
         stringBuilder.setLength(0);
         paragraph = new Paragraph();
-        paragraph.add("Sin otro motivo, queda constituido este préstamo, registrado con el numero: " + prestamo.getId());
+        Client client = prestamo.getClient();
+        paragraph.add(stringBuilder
+                .append("Cliente: ")
+                .append(NEW_LINE)
+                .append(client.getName())
+                .append(NEW_LINE)
+                .append("D.N.I.: ")
+                .append(client.getDni())
+                .append(NEW_LINE)
+                .append(SEPARATOR)
+                .toString());
         document.add(paragraph);
 
         stringBuilder.setLength(0);
         paragraph = new Paragraph();
-        paragraph.add(NEW_LINE);
-        paragraph.add(NEW_LINE);
-        paragraph.add(NEW_LINE);
+        Car car = prestamo.getCar();
         paragraph.add(stringBuilder
-            .append("                    ")
-                .append("........................")
-                .append("                        ")
-                .append("                        ")
-                .append("........................").toString());
+                .append("Vehiculo: ")
+                .append(NEW_LINE)
+                .append(car.getMarca())
+                .append(NEW_LINE)
+                .append("Chapa: ")
+                .append(car.getPatente())
+                .append(NEW_LINE)
+                .append("Precio por dia: $")
+                .append(car.getPrice())
+                .append(NEW_LINE)
+                .append("Dias: ")
+                .append(prestamo.getDays())
+                .append(NEW_LINE)
+                .append("Total: $")
+                .append(prestamo.getTotal())
+                .append(NEW_LINE)
+                .append(SEPARATOR)
+                .toString());
         document.add(paragraph);
 
         document.close();
@@ -152,7 +193,7 @@ public class FraInvoiceFactory {
      */
     protected static String getFileName(long pretamoId) {
         return new StringBuilder()
-                .append("Contrato 00000")
+                .append("Factura 00000")
                 .append(pretamoId)
                 .append(FILE_FORMAT)
                 .toString();
