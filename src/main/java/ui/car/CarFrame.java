@@ -5,6 +5,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Labeled;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -38,6 +39,7 @@ public class CarFrame extends Stage{
     private Label lblMarca;
     private Label lblPatente;
     private Label lblAvailability;
+    private Label lblPrice;
 
     public CarFrame() {
         this.controller = new CarFrameController(this);
@@ -58,7 +60,8 @@ public class CarFrame extends Stage{
         rightVBox.getChildren().add(imageView);
         rightVBox.getChildren().add(hBoxCreator(new Label("Marca: "),lblMarca));
         rightVBox.getChildren().add(hBoxCreator(new Label("Patente: "),lblPatente));
-        rightVBox.getChildren().add(lblAvailability);
+        rightVBox.getChildren().add(hBoxCreator(new Label("Estado: "),lblAvailability));
+        rightVBox.getChildren().add(hBoxCreator(new Label("Precio: $"),lblPrice));
 
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(15,15,15,30));
@@ -103,6 +106,7 @@ public class CarFrame extends Stage{
         lblMarca = new Label("");
         lblPatente = new Label("");
         lblAvailability = new Label("");
+        lblPrice = new Label("");
 
         //edit buttons
         btnUpdate = new Button("Update");
@@ -145,5 +149,9 @@ public class CarFrame extends Stage{
 
     public void setBtnPrestamo(Button btnPrestamo) {
         this.btnPrestamo = btnPrestamo;
+    }
+
+    public Label gettLblPrecio() {
+        return lblPrice;
     }
 }

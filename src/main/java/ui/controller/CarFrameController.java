@@ -60,6 +60,7 @@ public class CarFrameController extends GenericController{
     private void cargarInfo(Car currentCar) {
         view.getLblMarca().setText(currentCar.getMarca());
         view.getLblPatente().setText(currentCar.getPatente());
+        view.gettLblPrecio().setText(String.valueOf(currentCar.getPrice()));
         if (currentCar.isAvailable()) {
             view.getLblAvailability().setText(UIConstants.AVAILABLE_MSG);
             view.getLblAvailability().setTextFill(UIConstants.AVAILABLE_COLOR);
