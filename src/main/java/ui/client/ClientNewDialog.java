@@ -13,8 +13,8 @@ public class ClientNewDialog extends ClientAbstractDialog{
 
     public ClientNewDialog() {
         super();
-        this.setTitle("New Employee");
-        acceptButton.setText("Save");
+        this.setTitle("Nuevo Cliente");
+        acceptButton.setText("Guardar");
     }
 
     @Override

@@ -19,6 +19,7 @@ public class App extends Application {
         primaryStage = new MainFrame();
         primaryStage.setOnCloseRequest(event -> close());
         primaryStage.show();
+        primaryStage.setResizable(false);
     }
 
     private void close() {

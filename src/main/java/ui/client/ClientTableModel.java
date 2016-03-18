@@ -30,11 +30,11 @@ public class ClientTableModel extends TableView<Client>{
 
     private void mapColumns() {
         nameColumn = new TableColumn<>("Name");
-        nameColumn.setPrefWidth(200);
+        nameColumn.setPrefWidth(250);
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 
         dniColumn = new TableColumn<>("DNI");
-        dniColumn.setPrefWidth(200);
+        dniColumn.setPrefWidth(160);
         dniColumn.setCellValueFactory(new PropertyValueFactory<>("dni"));
 
     }

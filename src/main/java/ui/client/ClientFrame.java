@@ -110,6 +110,7 @@ public class ClientFrame extends Stage {
         this.searchField = new TextField();
         this.searchField.setMinWidth(320);
         this.searchField.setPrefWidth(320);
+        this.searchField.setPromptText("buscar...");
         this.searchField.setOnKeyReleased(e -> controller.sensitiveSearch(this.searchField.getText()));
 
         this.searchBtn = new Button("Buscar");

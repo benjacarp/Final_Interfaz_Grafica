@@ -30,6 +30,7 @@ public class CarEditDialog  extends CarAbstractDialog {
     private void llenarCampos() {
         campoMarca.setText(currentCar.getMarca());
         campoPatente.setText(currentCar.getPatente());
+        campoPrecio.setText(String.valueOf(currentCar.getPrice()));
         cargarImagen(currentCar);
     }
 

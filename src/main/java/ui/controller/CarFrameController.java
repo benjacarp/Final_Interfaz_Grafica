@@ -113,6 +113,7 @@ public class CarFrameController extends GenericController{
     public void nuevoPrestamo() {
         System.out.println("Nuevo prestamo");
         PrestamoDialog stage = new PrestamoDialog(currentCar);
+        stage.setResizable(false);
         stage.showAndWait();
         view.getTable().update();
     }
@@ -120,6 +121,7 @@ public class CarFrameController extends GenericController{
     public void updateClick() {
         System.out.println("Update selected CAR" + currentCar);
         CarEditDialog stage = new CarEditDialog(currentCar);
+        stage.setResizable(false);
         stage.showAndWait();
         view.getTable().update();
     }
@@ -130,7 +132,7 @@ public class CarFrameController extends GenericController{
         if (car != null) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirmation Needed");
-            alert.setHeaderText("You are about to delete: " + car.getMarca() + "(dni: " + car.getPatente() + ")");
+            alert.setHeaderText("You are about to delete: " + car.getMarca() + "(chapa: " + car.getPatente() + ")");
             alert.setContentText("Are you ok with this?");
 
             Optional<ButtonType> result = alert.showAndWait();
@@ -143,7 +145,6 @@ public class CarFrameController extends GenericController{
                 } catch (DIGAppException e) {
                     e.printStackTrace();
                 }
-
             }
         }
 
@@ -151,6 +152,7 @@ public class CarFrameController extends GenericController{
 
     public void newClicked() {
         CarNewDialog stage = new CarNewDialog();
+        stage.setResizable(false);
         stage.showAndWait();
         view.getTable().update();
         System.out.println("New Car");

@@ -55,15 +55,15 @@ public class PrestamoTable extends TableView<Prestamo> {
 
     private void mapColumns() {
         numberColumn = new TableColumn<>("Prestamo");
-        numberColumn.setPrefWidth(100);
+        numberColumn.setPrefWidth(70);
         numberColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
 
         clientColumn = new TableColumn<>("Cliente");
-        clientColumn.setPrefWidth(100);
+        clientColumn.setPrefWidth(155);
         clientColumn.setCellValueFactory(new PropertyValueFactory<>("client"));
 
         carColumn = new TableColumn<>("Auto");
-        carColumn.setPrefWidth(100);
+        carColumn.setPrefWidth(155);
         carColumn.setCellValueFactory(new PropertyValueFactory<>("car"));
     }
 }

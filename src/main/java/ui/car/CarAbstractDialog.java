@@ -53,8 +53,8 @@ public abstract class CarAbstractDialog extends Stage {
 
     private void initComponents() {
         imageView = new ImageView();
-        imageView.setFitHeight(100);
-        imageView.setFitWidth(100);
+        imageView.setFitHeight(150);
+        imageView.setFitWidth(200);
         imageView.setPreserveRatio(false);
         image = new Image("/default_car.jpg");
         imageView.setImage(image);
@@ -82,15 +82,15 @@ public abstract class CarAbstractDialog extends Stage {
         Label marca = new Label("Marca: ");
         GridPane.setConstraints(marca,0,0);
         GridPane.setConstraints(campoMarca,1,0);
-        Label patente = new Label("DNI: ");
+        Label patente = new Label("Chapa: ");
         GridPane.setConstraints(patente,0,1);
         GridPane.setConstraints(campoPatente,1,1);
 
-        Label precio = new Label("precio: ");
+        Label precio = new Label("Precio: ");
         GridPane.setConstraints(precio,0,2);
         GridPane.setConstraints(campoPrecio,1,2);
 
-        Label photo = new Label("photo: ");
+        Label photo = new Label("foto: ");
         GridPane.setConstraints(photo,0,3);
         HBox hBox = new HBox();
         fileField = new TextField();
@@ -104,7 +104,7 @@ public abstract class CarAbstractDialog extends Stage {
         GridPane.setConstraints(acceptButton,1,5);
         grid.getChildren().addAll(marca,campoMarca,patente,campoPatente,photo,hBox,imageView,cancelButton,acceptButton, precio,campoPrecio);
 
-        Scene scene = new Scene(grid,300,300);
+        Scene scene = new Scene(grid,380,375);
         scene.getStylesheets().add("/style.css");
         this.setScene(scene);
     }
@@ -114,11 +114,11 @@ public abstract class CarAbstractDialog extends Stage {
     protected void alertClients(Car car, boolean update) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         if (update) {
-            alert.setTitle("Cliente Modificado");
-            alert.setHeaderText("Se modificaron datos de "+ car.getMarca() +" en el registro de clientes");
+            alert.setTitle("Auto Modificado");
+            alert.setHeaderText("Se modificaron datos de "+ car.getMarca() +" en el registro de vehiculos");
         } else {
-            alert.setTitle("Nuevo Cliente");
-            alert.setHeaderText("Se agrego a "+ car.getMarca() +" al registro de clientes");
+            alert.setTitle("Nuevo Vehiculo");
+            alert.setHeaderText("Se agrego el vehiculo "+ car.getMarca() +" al registro de vehiculos");
         }
         alert.showAndWait();
     }

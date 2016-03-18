@@ -115,7 +115,7 @@ public class CarFrame extends Stage{
         btnDelete.setOnAction(e -> controller.deleteClick());
 
         btnPrestamo = new Button("Nuevo Prestamo");
-        btnPrestamo.setPrefWidth(100);
+        btnPrestamo.setPrefWidth(110);
         btnPrestamo.setMinHeight(40);
         btnPrestamo.setOnAction(event -> controller.nuevoPrestamo());
 

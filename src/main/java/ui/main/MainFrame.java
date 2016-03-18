@@ -11,6 +11,7 @@ import jiconfont.icons.FontAwesome;
 import jiconfont.javafx.IconFontFX;
 import jiconfont.javafx.IconNode;
 //import jiconfont.Icons
+import ui.controller.MainController;
 import ui.utils.UIConstants;
 
 /**
@@ -51,7 +52,7 @@ public class MainFrame extends Stage{
         menuBar = new MenuBar();
         menuFile = new Menu("Archivo");
         menuPrestamos = new Menu("Prestamos");
-        menuItemSocios = new MenuItem("Socios...");
+        menuItemSocios = new MenuItem("Clientes...");
         menuItemCars = new MenuItem("Autos...");
         menuItemDevolucion = new MenuItem("Devolucion...");
         menuItemPrestamos = new MenuItem("Ver Prestamos...");
@@ -66,16 +67,16 @@ public class MainFrame extends Stage{
         menuPrestamos.getItems().add(menuItemPrestamos);
 
 
-        menuItemSocios.setGraphic(addIcon(FontAwesome.USER, UIConstants.ICON_STANDAR_SIZE, Color.BLACK));
+        menuItemSocios.setGraphic(addIcon(FontAwesome.USER, UIConstants.ICON_STANDAR_SIZE, Color.WHITE));
         menuItemSocios.setOnAction(e -> controller.socioClick());
-        menuItemCars.setGraphic(addIcon(FontAwesome.CAR, UIConstants.ICON_STANDAR_SIZE, Color.BLACK));
+        menuItemCars.setGraphic(addIcon(FontAwesome.CAR, UIConstants.ICON_STANDAR_SIZE, Color.WHITE));
         menuItemCars.setOnAction(e -> controller.carClick());
 
-        menuItemNewPrestamo.setGraphic(addIcon(FontAwesome.HOURGLASS_START, UIConstants.ICON_STANDAR_SIZE, Color.BLACK));
+        menuItemNewPrestamo.setGraphic(addIcon(FontAwesome.HOURGLASS_START, UIConstants.ICON_STANDAR_SIZE, Color.WHITE));
         menuItemNewPrestamo.setOnAction(event -> controller.nuevoPrestamoClick());
-        menuItemDevolucion.setGraphic(addIcon(FontAwesome.HOURGLASS_END, UIConstants.ICON_STANDAR_SIZE, Color.BLACK));
+        menuItemDevolucion.setGraphic(addIcon(FontAwesome.HOURGLASS_END, UIConstants.ICON_STANDAR_SIZE, Color.WHITE));
         menuItemDevolucion.setOnAction(event -> controller.devolucionClick());
-        menuItemPrestamos.setGraphic(addIcon(FontAwesome.HISTORY, UIConstants.ICON_STANDAR_SIZE, Color.BLACK));
+        menuItemPrestamos.setGraphic(addIcon(FontAwesome.HISTORY, UIConstants.ICON_STANDAR_SIZE, Color.WHITE));
         menuItemPrestamos.setOnAction(event -> controller.prestamoClick());
     }
 

@@ -54,7 +54,7 @@ public class CarTableModel extends TableView<Car>{
 
     private void mapColumns() {
         marcaColumn = new TableColumn<>("Marca");
-        marcaColumn.setPrefWidth(100);
+        marcaColumn.setPrefWidth(198);
         marcaColumn.setCellValueFactory(new PropertyValueFactory<>("marca"));
 
         patenteColumn = new TableColumn<>("Patente");
@@ -62,7 +62,7 @@ public class CarTableModel extends TableView<Car>{
         patenteColumn.setCellValueFactory(new PropertyValueFactory<>("patente"));
 
         priceColumn = new TableColumn<>("Precio");
-        priceColumn.setPrefWidth(50);
+        priceColumn.setPrefWidth(60);
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
 
     }

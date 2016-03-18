@@ -2,10 +2,13 @@ package ui.prestamo;
 
 import exception.DIGAppException;
 import exception.FileGenerationException;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -33,6 +36,8 @@ public class DevolucionDialog extends Stage {
         this.initStyle(StageStyle.UTILITY);
         this.initModality(Modality.APPLICATION_MODAL);
 
+        this.setTitle("Devolución");
+
         this.id = id;
         initComponents();
         createStage();
@@ -40,13 +45,22 @@ public class DevolucionDialog extends Stage {
 
     private void createStage() {
         VBox vBox = new VBox();
+        vBox.setPadding(new Insets(15,15,15,15));
+        vBox.setSpacing(10);
 
-        vBox.getChildren().add(new Label("Nro. de Prestamo"));
-        vBox.getChildren().add(prestamoNumber);
-        vBox.getChildren().add(btnDevolucion);
-        vBox.getChildren().add(lblDate);
+        HBox hBox1 = new HBox();
+        hBox1.getChildren().addAll(new Label("Fecha:"),lblDate);
+        vBox.getChildren().add(hBox1);
 
-        Scene scene = new Scene(vBox,300,300);
+        HBox hBox2 = new HBox();
+        hBox2.getChildren().addAll(new Label("Nro. de Prestamo:"),prestamoNumber);
+        vBox.getChildren().add(hBox2);
+
+        StackPane pane = new StackPane();
+        pane.getChildren().add(btnDevolucion);
+        vBox.getChildren().add(pane);
+
+        Scene scene = new Scene(vBox,300,120);
         scene.getStylesheets().add("/style.css");
         this.setScene(scene);
     }

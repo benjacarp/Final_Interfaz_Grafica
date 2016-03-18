@@ -42,6 +42,7 @@ public class ClientFrameController extends GenericController{
 
         System.out.println("Add new Client");
         Stage stage = new ClientNewDialog();
+        stage.setResizable(false);
         stage.showAndWait();
         System.out.println("update table view");
         this.view.getTable().update();
@@ -160,6 +161,7 @@ public class ClientFrameController extends GenericController{
     public void updateClient() {
         System.out.println("Modify client" + currentClient);
         Stage stage = new ClientEditDialog(currentClient);
+        stage.setResizable(false);
         stage.showAndWait();
         this.view.getTable().update();
     }

@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -59,6 +60,8 @@ public abstract class ClientAbstractDialog extends Stage {
     private void createStage() {
         this.setTitle("Edit client");
 
+        VBox vBox = new VBox();
+
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(15,15,15,15));
         grid.setVgap(10);
@@ -70,7 +73,7 @@ public abstract class ClientAbstractDialog extends Stage {
         Label dni = new Label("DNI: ");
         GridPane.setConstraints(dni,0,1);
         GridPane.setConstraints(campoDNI,1,1);
-        Label photo = new Label("photo: ");
+        Label photo = new Label("foto: ");
         GridPane.setConstraints(photo,0,2);
 
         HBox hBox = new HBox();
@@ -81,11 +84,16 @@ public abstract class ClientAbstractDialog extends Stage {
         GridPane.setConstraints(hBox,1,2);
         GridPane.setConstraints(imageView,1,3);
 
-        GridPane.setConstraints(cancelButton,0,4);
-        GridPane.setConstraints(acceptButton,1,4);
-        grid.getChildren().addAll(nombre,campoNombre,dni,campoDNI,photo,hBox,imageView,cancelButton,acceptButton);
+        grid.getChildren().addAll(nombre,campoNombre,dni,campoDNI,photo,hBox,imageView);
 
-        Scene scene = new Scene(grid,300,300);
+        HBox hBoxAC = new HBox();
+        hBoxAC.getChildren().addAll(cancelButton,new Label("               "),acceptButton);
+        hBoxAC.setPadding(new Insets(15,100,15,100));
+//        hBox.setHgrow();
+        vBox.getChildren().add(grid);
+        vBox.getChildren().add(hBoxAC);
+
+        Scene scene = new Scene(vBox,400,300);
         scene.getStylesheets().add("/style.css");
         this.setScene(scene);
     }

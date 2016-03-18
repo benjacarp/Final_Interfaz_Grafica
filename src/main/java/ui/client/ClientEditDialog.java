@@ -21,8 +21,9 @@ public class ClientEditDialog extends ClientAbstractDialog{
 
     public ClientEditDialog(Client currentClient) {
         super();
-        this.setTitle("Update Employee");
-        acceptButton.setText("Update");
+        this.setTitle("Modificar Cliente");
+        acceptButton.setText("Modificar");
+        campoDNI.setDisable(true);
         this.currentClient = currentClient;
         llenarCampos();
     }

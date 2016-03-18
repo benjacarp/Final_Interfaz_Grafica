@@ -2,10 +2,13 @@ package ui.prestamo;
 
 import exception.DIGAppException;
 import exception.FileGenerationException;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -37,6 +40,7 @@ public class PrestamoDialog extends Stage{
         this.initStyle(StageStyle.UTILITY);
         this.initModality(Modality.APPLICATION_MODAL);
 
+        this.setTitle("Nuevo Prestamo");
         this.car = car;
         initComponents();
         createStage();
@@ -44,13 +48,27 @@ public class PrestamoDialog extends Stage{
 
     private void createStage() {
         VBox vBox = new VBox();
-        vBox.getChildren().add(comboCar);
-        vBox.getChildren().add(btnSearch);
-        vBox.getChildren().add(comboClient);
-        vBox.getChildren().add(btnConfirm);
-        vBox.getChildren().add(lblDate);
+        vBox.setPadding(new Insets(25,25,25,25));
+        vBox.setSpacing(15);
 
-        Scene scene = new Scene(vBox,300,300);
+        HBox fechaHbox = new HBox();
+        fechaHbox.getChildren().addAll(new Label("Fecha: "),lblDate);
+        vBox.getChildren().add(fechaHbox);
+
+        HBox carHBox = new HBox();
+        carHBox.getChildren().addAll(new Label("Vehículo: "),comboCar);
+        vBox.getChildren().add(carHBox);
+//        vBox.getChildren().add(btnSearch);
+
+        HBox clientHBox = new HBox();
+        clientHBox.getChildren().addAll(new Label("Cliente: "),comboClient);
+        vBox.getChildren().add(clientHBox);
+
+        StackPane stackPane = new StackPane();
+        stackPane.getChildren().add(btnConfirm);
+        vBox.getChildren().add(stackPane);
+
+        Scene scene = new Scene(vBox,300,200);
         scene.getStylesheets().add("/style.css");
         this.setScene(scene);
     }
