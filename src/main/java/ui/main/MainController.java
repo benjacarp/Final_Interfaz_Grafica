@@ -4,6 +4,7 @@ import javafx.stage.Stage;
 import ui.car.CarFrame;
 import ui.client.ClientFrame;
 import ui.prestamo.DevolucionDialog;
+import ui.prestamo.PrestamoDialog;
 import ui.prestamo.PrestamoHistoryDialog;
 
 /**
@@ -39,6 +40,7 @@ public class MainController {
     }
 
     public void nuevoPrestamoClick() {
-        System.out.println("Nuevo Prestamo");
+        Stage stage = new PrestamoDialog(null);
+        stage.show();
     }
 }

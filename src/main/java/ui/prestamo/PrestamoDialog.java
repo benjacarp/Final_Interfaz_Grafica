@@ -13,6 +13,7 @@ import model.Car;
 import model.Prestamo;
 import service.CarService;
 import service.PrestamoService;
+import ui.car.ComboCar;
 import ui.client.ComboClient;
 
 /**
@@ -23,7 +24,7 @@ public class PrestamoDialog extends Stage{
     private Car car;
     private Button btnSearch;
     private ComboClient comboClient;
-    private Label lblCar;
+    private ComboCar comboCar;
     private Button btnConfirm;
 
     public PrestamoDialog(Car car) {
@@ -37,7 +38,7 @@ public class PrestamoDialog extends Stage{
 
     private void createStage() {
         VBox vBox = new VBox();
-        vBox.getChildren().add(lblCar);
+        vBox.getChildren().add(comboCar);
         vBox.getChildren().add(btnSearch);
         vBox.getChildren().add(comboClient);
         vBox.getChildren().add(btnConfirm);
@@ -48,8 +49,7 @@ public class PrestamoDialog extends Stage{
     }
 
     private void initComponents() {
-        lblCar = new Label("");
-        lblCar.setText(car.toString());
+
         btnSearch = new Button("...");
         btnSearch.setOnAction(event -> btnSearchClick());
 
@@ -57,6 +57,10 @@ public class PrestamoDialog extends Stage{
         btnConfirm.setOnAction(event -> confirmPrestamo());
 
         comboClient = new ComboClient();
+        comboCar = new ComboCar();
+        if (car != null) {
+            comboCar.getSelectionModel().select(car);
+        }
     }
 
     private void btnSearchClick() {
@@ -67,7 +71,7 @@ public class PrestamoDialog extends Stage{
         System.out.println("Confirmado");
 
         Prestamo prestamo = new Prestamo();
-        prestamo.setCar(car);
+        prestamo.setCar(comboCar.getSelectedCar());
         prestamo.setClient(comboClient.getSelectedClient());
         prestamo.setActive(true);
 
